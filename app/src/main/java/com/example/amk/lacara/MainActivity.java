@@ -1,10 +1,12 @@
 package com.example.amk.lacara;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -15,17 +17,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Creating button and what it does
-        //Grabbing Button from Activity
-        Button btn = (Button) findViewById(R.id.btnPantry);
-        //Button is doing stuff
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.i(TAG, "Test button for the pantry!");
-                Toast.makeText(getApplicationContext(), "This is Pantry!", Toast.LENGTH_LONG).show();
+        final EditText entEmailLogin = (EditText) findViewById(R.id.entEmailLogin);
+        final EditText entPassLogin = (EditText) findViewById(R.id.entPassLogin);
 
+        final Button btLogin = (Button) findViewById(R.id.btLogin);
+        final Button btReg = (Button) findViewById(R.id.btReg);
+
+        btReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent regIntent = new Intent(MainActivity.this, RegisterActivity.class);
+                MainActivity.this.startActivity(regIntent);
             }
         });
+
     }
 }
