@@ -17,7 +17,7 @@
         android:id="@+id/capture"
         android:layout_height="match_parent"
         style="@style/Widget.AppCompat.Button"
-        android:onClick="dispatchTakePictureIntent (CameraActivity)" />
+        android:onClick="dispatchTakePictureIntent" />
 
 </LinearLayout>
 
