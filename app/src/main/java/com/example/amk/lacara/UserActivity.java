@@ -21,11 +21,27 @@ public class UserActivity extends AppCompatActivity {
 
         String message = useremail + "is logged in!";
         final Button camera = (Button) findViewById(R.id.BTcamera);
+        final Button graphs = (Button) findViewById(R.id.BTGraphs);
+        final Button calendar = (Button) findViewById(R.id.BTCalendar);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
                 Intent cameraIntent = new Intent(UserActivity.this, CameraActivity.class);
                 UserActivity.this.startActivity(cameraIntent);
+            }
+        });
+        graphs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent graphsIntent = new Intent(UserActivity.this, GraphsActivity.class);
+                UserActivity.this.startActivity(graphsIntent);
+            }
+        });
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent calendarIntent = new Intent(UserActivity.this, GraphsActivity.class);
+                UserActivity.this.startActivity(calendarIntent);
             }
         });
     }

@@ -18,15 +18,38 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentStart="true" />
 
     <Button
         android:text="CAMERA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="102dp"
-        android:id="@+id/BTcamera" />
+        android:id="@+id/BTcamera"
+        android:layout_alignLeft="@+id/BTCalendar"
+        android:layout_alignStart="@+id/BTCalendar"
+        android:layout_alignRight="@+id/BTCalendar"
+        android:layout_alignEnd="@+id/BTCalendar" />
+
+    <Button
+        android:text="GO TO GRAPHS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/BTGraphs"
+        android:layout_marginTop="63dp"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:text="GO TO CALENDAR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/BTGraphs"
+        android:layout_alignLeft="@+id/BTGraphs"
+        android:layout_alignStart="@+id/BTGraphs"
+        android:layout_marginTop="11dp"
+        android:id="@+id/BTCalendar"
+        android:layout_alignRight="@+id/BTGraphs"
+        android:layout_alignEnd="@+id/BTGraphs" />
 </RelativeLayout>
