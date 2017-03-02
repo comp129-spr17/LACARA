@@ -8,6 +8,11 @@ import android.widget.ImageView;
 import android.content.Intent;
 import android.provider.MediaStore;
 import android.graphics.Bitmap;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import android.os.Environment;
 
 
 /**
@@ -43,5 +48,24 @@ public class CameraActivity extends AppCompatActivity {
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             result.setImageBitmap(imageBitmap);
         }
+    }
+
+
+    String mCurrentPhotoPath;
+    private File createImageFile() throws IOException {
+        // Create an unique image file name with current date
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String imageFileName = "LACARA_JPEG_" + timeStamp + "_";
+        // Get the private directory to store the photo
+        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
+        File image = File.createTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+        );
+
+        // Save a file: path for use with ACTION_VIEW intents
+        mCurrentPhotoPath = image.getAbsolutePath();
+        return image;
     }
 }
