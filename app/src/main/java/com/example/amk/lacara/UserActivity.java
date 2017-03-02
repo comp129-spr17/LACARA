@@ -84,19 +84,20 @@ private GestureDetectorCompat detector;
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
         try {
+            //up to down swipe
             if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE
                     && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
                     Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
                     UserActivity.this.startActivity(manualIntent);
                     return true;
             }
+            //down to up swipe
             else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE
                     && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
                 Intent budgetOverviewIntent = new Intent(UserActivity.this, BudgetOverviewActivity.class);
                 UserActivity.this.startActivity(budgetOverviewIntent);
                 return true;
             }
-
 
                 // right to left swipe
             if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
