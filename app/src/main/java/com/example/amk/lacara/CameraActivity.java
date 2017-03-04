@@ -1,6 +1,9 @@
 package com.example.amk.lacara;
 
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.provider.Settings;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,11 +14,13 @@ import android.content.Intent;
 import android.provider.MediaStore;
 import android.graphics.Bitmap;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import android.os.Environment;
-
+import android.Manifest;
+import android.app.Activity;
 
 /**
  * Created by chiyu on 2/20/17.
@@ -25,6 +30,27 @@ public class CameraActivity extends AppCompatActivity {
 
     ImageView result;
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    Uri photoURI;
+
+    // Storage Permissions
+    private static final int REQUEST_EXTERNAL_STORAGE = 1;
+    private static String[] PERMISSIONS_STORAGE = {
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+
+    public static void verifyStoragePermissions(Activity activity) {
+        // Check if we have write permission
+        int permission = ActivityCompat.checkSelfPermission(activity, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        if (permission != PackageManager.PERMISSION_GRANTED) {
+            // if we dont't，get permission
+            ActivityCompat.requestPermissions(
+                    activity,
+                    PERMISSIONS_STORAGE,
+                    REQUEST_EXTERNAL_STORAGE
+            );
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +73,11 @@ public class CameraActivity extends AppCompatActivity {
             }
             // Continue only if the File was successfully created
             if (photoFile != null) {
-                //Uri photoURI = FileProvider.getUriForFile(this, "com.example.android.fileprovider",photoFile);
-                Uri photoURI = Uri.fromFile(photoFile);
+                photoURI = Uri.fromFile(photoFile);
+                System.out.print(photoURI);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                galleryAddPic();
+                //galleryAddPic();
             }
         }
     }
@@ -59,9 +85,20 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            /*
+            try {
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap( getApplicationContext().getContentResolver(), photoURI);
+                result.setImageBitmap(bitmap);
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+
             //Bundle extras = data.getExtras();
             //Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //result.setImageBitmap(imageBitmap);
+            //result.setImageBitmap(imageBitmap); */
         }
     }
 
@@ -70,26 +107,21 @@ public class CameraActivity extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an unique image file name with current date
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "LACARA_JPEG_" + timeStamp + "_";
+        String imageFileName = "LACARA_JPEG_" + timeStamp + ".jpg";
         // Get the private directory to store the photo
-        File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
-        File image = File.createTempFile(
-                imageFileName,  /* prefix */
-                ".jpg",         /* suffix */
-                storageDir      /* directory */
-        );
-
+        File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
+        File image = new File(storageDir,imageFileName);
         // Save a file: path for use with ACTION_VIEW intents
         mCurrentPhotoPath = image.getAbsolutePath();
         return image;
     }
+
+    /*
     private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(mCurrentPhotoPath);
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
-    }
-
-
+    }*/
 }
