@@ -4,6 +4,7 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import java.util.Date;
 import android.os.Environment;
 import android.Manifest;
 import android.app.Activity;
+
 
 /**
  * Created by chiyu on 2/20/17.
@@ -55,6 +57,7 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        verifyStoragePermissions(CameraActivity.this);
         setContentView(R.layout.activity_camera);
 
         Button click = (Button)findViewById(R.id.capture);
@@ -77,7 +80,6 @@ public class CameraActivity extends AppCompatActivity {
                 System.out.print(photoURI);
                 takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                 startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
-                //galleryAddPic();
             }
         }
     }
@@ -85,7 +87,7 @@ public class CameraActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            /*
+
             try {
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap( getApplicationContext().getContentResolver(), photoURI);
                 result.setImageBitmap(bitmap);
@@ -95,10 +97,7 @@ public class CameraActivity extends AppCompatActivity {
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
-
-            //Bundle extras = data.getExtras();
-            //Bitmap imageBitmap = (Bitmap) extras.get("data");
-            //result.setImageBitmap(imageBitmap); */
+            }
         }
     }
 
@@ -116,12 +115,4 @@ public class CameraActivity extends AppCompatActivity {
         return image;
     }
 
-    /*
-    private void galleryAddPic() {
-        Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
-        File f = new File(mCurrentPhotoPath);
-        Uri contentUri = Uri.fromFile(f);
-        mediaScanIntent.setData(contentUri);
-        this.sendBroadcast(mediaScanIntent);
-    }*/
 }
