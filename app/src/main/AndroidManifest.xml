@@ -26,6 +26,8 @@
         <activity android:name=".CameraActivity" />
         <activity android:name=".GraphsActivity" />
         <activity android:name=".CalendarActivity"></activity>
+        <activity android:name=".ManualEnterActivity"></activity>
+        <activity android:name=".BudgetOverviewActivity"></activity>
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.amk.lacara;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -9,19 +10,26 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.GestureDetector;
-import android.support.v4.view.GestureDetectorCompat;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.View.OnTouchListener;
+
 
 public class UserActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
-private GestureDetectorCompat detector;
+
     private static final int SWIPE_MIN_DISTANCE = 120;
     private static final int SWIPE_MAX_OFF_PATH = 250;
-    private static final int SWIPE_THRESHOLD_VELOCITY = 200;
+    private static final int SWIPE_THRESHOLD = 100;
+    private static final int SWIPE_THRESHOLD_VELOCITY = 100;
+    private GestureDetectorCompat detector;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Create new director for gesture detection
         detector = new GestureDetectorCompat(this,this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+
 
         final EditText entEmailLogin = (EditText) findViewById(R.id.entEmailLogin);
 
@@ -83,40 +91,45 @@ private GestureDetectorCompat detector;
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        boolean result = false;
         try {
-            //up to down swipe
-            if (e1.getY() - e2.getY() > SWIPE_MIN_DISTANCE
-                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                    Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
-                    UserActivity.this.startActivity(manualIntent);
-                    return true;
-            }
-            //down to up swipe
-            else if (e2.getY() - e1.getY() > SWIPE_MIN_DISTANCE
-                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                Intent budgetOverviewIntent = new Intent(UserActivity.this, BudgetOverviewActivity.class);
-                UserActivity.this.startActivity(budgetOverviewIntent);
-                return true;
+            float diffY = e2.getY() - e1.getY();
+            float diffX = e2.getX() - e1.getX();
+            //Swipe left and right
+            if (Math.abs(diffX) > Math.abs(diffY)) {
+                if(Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    if (diffX > 0 ) {
+                        //Swipe to right to reach this
+                        Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
+                        UserActivity.this.startActivity(manualIntent);
+                    }
+                    else {
+                        //swipe to left to reach this
+                        Intent budgetOverviewIntent = new Intent(UserActivity.this, BudgetOverviewActivity.class);
+                        UserActivity.this.startActivity(budgetOverviewIntent);
+                    }
+                    result = true;
+                }
             }
 
-                // right to left swipe
-            if (e1.getX() - e2.getX() > SWIPE_MIN_DISTANCE
-                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                Intent calendarIntent = new Intent(UserActivity.this, CalendarActivity.class);
-                UserActivity.this.startActivity(calendarIntent);
-                return true;
-            }
-            // left to right swipe
-            else if (e2.getX() - e1.getX() > SWIPE_MIN_DISTANCE
-                    && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                Intent graphsIntent = new Intent(UserActivity.this, GraphsActivity.class);
-                UserActivity.this.startActivity(graphsIntent);
-                return true;
+            //Swipe down and up
+            else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
+                if (diffY > 0 ) {
+                    //Swipe down to reach this page
+                    Intent calendarIntent = new Intent(UserActivity.this, CalendarActivity.class);
+                    UserActivity.this.startActivity(calendarIntent);
+                }
+                else {
+                    //Swipe up to reach this page
+                    Intent graphsIntent = new Intent(UserActivity.this, GraphsActivity.class);
+                    UserActivity.this.startActivity(graphsIntent);
+                }
+                result = true;
             }
         } catch (Exception e) {
-
+            e.printStackTrace();
         }
-        return false;
+        return result;
     }
 
     @Override
@@ -124,4 +137,5 @@ private GestureDetectorCompat detector;
         detector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
+
 }
