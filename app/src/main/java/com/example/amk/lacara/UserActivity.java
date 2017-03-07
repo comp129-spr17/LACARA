@@ -7,6 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.prolificinteractive.materialcalendarview.CalendarDay;
+import com.prolificinteractive.materialcalendarview.CalendarMode;
+import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
+
+import java.util.Calendar;
+
 public class UserActivity extends AppCompatActivity {
 
     @Override
@@ -40,7 +46,7 @@ public class UserActivity extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                Intent calendarIntent = new Intent(UserActivity.this, GraphsActivity.class);
+                Intent calendarIntent = new Intent(UserActivity.this, CalendarActivity.class);
                 UserActivity.this.startActivity(calendarIntent);
             }
         });
