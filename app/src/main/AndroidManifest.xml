@@ -25,9 +25,10 @@
         <activity android:name=".UserActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".GraphsActivity" />
-        <activity android:name=".CalendarActivity"></activity>
-        <activity android:name=".ManualEnterActivity"></activity>
-        <activity android:name=".BudgetOverviewActivity"></activity>
+        <activity android:name=".CalendarActivity" />
+        <activity android:name=".ManualEnterActivity" />
+        <activity android:name=".BudgetOverviewActivity" />
+        <activity android:name=".SplashScreen"></activity>
     </application>
 
 </manifest>

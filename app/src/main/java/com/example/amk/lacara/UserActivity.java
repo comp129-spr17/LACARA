@@ -122,6 +122,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
                 if (diffY > 0 ) {
                     //Swipe down to reach this page
+                    //still have some problems swiping down
                     Intent calendarIntent = new Intent(UserActivity.this, CalendarActivity.class);
                     UserActivity.this.startActivity(calendarIntent);
                 }
@@ -139,7 +140,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event){
+    public boolean onTouchEvent(MotionEvent event)
+    {
         detector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
@@ -147,20 +149,10 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
 
     public boolean onSwipe(Direction direction)
     {
+
         return false;
     }
-/*
-    public Direction getDirection(float x1, float y1, float x2, float y2)
-    {
-        double angle = getAngle(x1,y1,x2,y2);
-        return Direction.get(angle);
-    }
 
-    public double getAngle(float x1, float y1, float x2, float y2)
-    {
-        double rad = Math.atan(y1-y2,x2-x1) + Math.PI;
-        return (rad*180/Math.PI + 180)%360;
-    }*/
 
     public enum Direction
     {
@@ -190,4 +182,3 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         }
     }
 }
-//testingg
