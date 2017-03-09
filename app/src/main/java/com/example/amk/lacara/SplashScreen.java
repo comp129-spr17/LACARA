@@ -10,7 +10,7 @@ import android.os.Handler;
 public class SplashScreen extends AppCompatActivity {
 
     //wait time
-    private final int splash_display_length = 1000;
+    private final int splash_display_length = 2500;
 
     //called when activity is created
     @Override
@@ -22,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
         new Handler().postDelayed(new Runnable(){
             @Override
             public void run() {
-                Intent mainIntent = new Intent(SplashScreen.this,MainActivity.class);
+                Intent mainIntent = new Intent(SplashScreen.this,UserActivity.class);
                 SplashScreen.this.startActivity(mainIntent);
                 SplashScreen.this.finish();
             }
