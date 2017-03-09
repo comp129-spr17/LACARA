@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LACARA.iml" filepath="$PROJECT_DIR$/LACARA.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LACARATestswipe.iml" filepath="$PROJECT_DIR$/LACARATestswipe.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

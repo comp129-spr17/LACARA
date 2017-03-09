@@ -52,4 +52,12 @@
         android:id="@+id/BTCalendar"
         android:layout_alignRight="@+id/BTGraphs"
         android:layout_alignEnd="@+id/BTGraphs" />
+
+    <Button
+        android:id="@+id/BTManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="Manual Input" />
 </RelativeLayout>

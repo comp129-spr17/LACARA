@@ -23,6 +23,7 @@ public class UserActivity extends AppCompatActivity {
         final Button camera = (Button) findViewById(R.id.BTcamera);
         final Button graphs = (Button) findViewById(R.id.BTGraphs);
         final Button calendar = (Button) findViewById(R.id.BTCalendar);
+        final Button manual = (Button) findViewById(R.id.BTManual);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -42,6 +43,13 @@ public class UserActivity extends AppCompatActivity {
             public void onClick(View v){
                 Intent calendarIntent = new Intent(UserActivity.this, GraphsActivity.class);
                 UserActivity.this.startActivity(calendarIntent);
+            }
+        });
+        manual.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
+                UserActivity.this.startActivity(manualIntent);
             }
         });
     }
