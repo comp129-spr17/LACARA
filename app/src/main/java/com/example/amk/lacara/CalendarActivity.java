@@ -14,7 +14,6 @@ import java.util.Calendar;
 
 public class CalendarActivity extends AppCompatActivity {
 
-    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
@@ -33,7 +32,5 @@ public class CalendarActivity extends AppCompatActivity {
                 Toast.makeText(CalendarActivity.this,""+date,Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
 }
