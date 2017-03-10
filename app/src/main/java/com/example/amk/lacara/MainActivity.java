@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
                                 String useremail = jsonLogin.getString("useremail");
                                 String password = jsonLogin.getString("password");
 
-                                Intent intent = new Intent(MainActivity.this, UserActivity.class);
+                                Intent intent = new Intent(MainActivity.this, SplashScreen.class);
                                 intent.putExtra("useremail", useremail);
 
                                 MainActivity.this.startActivity(intent);
