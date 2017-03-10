@@ -39,14 +39,9 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         final Button camera = (Button) findViewById(R.id.BTcamera);
         final Button graphs = (Button) findViewById(R.id.BTGraphs);
         final Button calendar = (Button) findViewById(R.id.BTCalendar);
-<<<<<<< HEAD
         final Button manual = (Button) findViewById(R.id.BTManual);
-        camera.setOnClickListener(new View.OnClickListener() {
-=======
-
         camera.setOnClickListener(new View.OnClickListener()
         {
->>>>>>> origin/tempswipes
             @Override
             public void onClick(View v){
                 Intent cameraIntent = new Intent(UserActivity.this, CameraActivity.class);
@@ -67,7 +62,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 UserActivity.this.startActivity(calendarIntent);
             }
         });
-<<<<<<< HEAD
         manual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -75,7 +69,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 UserActivity.this.startActivity(manualIntent);
             }
         });
-=======
 
     }
 
@@ -194,6 +187,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         {
             return (angle >= init) && (angle < end);
         }
->>>>>>> origin/tempswipes
+
     }
 }

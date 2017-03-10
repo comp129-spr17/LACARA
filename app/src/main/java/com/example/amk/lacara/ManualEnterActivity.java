@@ -22,7 +22,7 @@ public class ManualEnterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manualenter);
     }
-<<<<<<< HEAD
+
     private EditText item;
     private EditText location;
     private EditText price;
@@ -41,6 +41,6 @@ public class ManualEnterActivity extends AppCompatActivity {
         toast.makeText(ManualEnterActivity.this, price.getText(), toast.LENGTH_SHORT).show();
     }
 }
-=======
-}
->>>>>>> origin/tempswipes
+
+
+

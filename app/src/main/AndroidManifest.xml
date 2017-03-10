@@ -25,15 +25,10 @@
         <activity android:name=".UserActivity" />
         <activity android:name=".CameraActivity" />
         <activity android:name=".GraphsActivity" />
-<<<<<<< HEAD
         <activity android:name=".CalendarActivity"></activity>
         <activity android:name=".ManualEnterActivity"></activity>
-=======
-        <activity android:name=".CalendarActivity" />
-        <activity android:name=".ManualEnterActivity" />
         <activity android:name=".BudgetOverviewActivity" />
         <activity android:name=".SplashScreen"></activity>
->>>>>>> origin/tempswipes
     </application>
 
 </manifest>
