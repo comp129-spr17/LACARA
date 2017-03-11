@@ -21,13 +21,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
+        <activity android:name=".RegisterActivity"/>
+
         <activity android:name=".UserActivity" />
+
         <activity android:name=".CameraActivity" />
+
         <activity android:name=".GraphsActivity" />
-        <activity android:name=".CalendarActivity"></activity>
-        <activity android:name=".ManualEnterActivity"></activity>
+
+        <activity android:name=".CalendarActivity"
+            android:label="Calendar"></activity>
+
+        <activity android:name=".ManualEnterActivity"
+            android:label="Manual Entry"></activity>
+
         <activity android:name=".BudgetOverviewActivity" />
+
         <activity android:name=".SplashScreen"></activity>
     </application>
 

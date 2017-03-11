@@ -2,6 +2,7 @@ package com.example.amk.lacara;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -21,6 +22,8 @@ public class ManualEnterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manualenter);
+        Toolbar ManualToolbar = (Toolbar) findViewById(R.id.ManualTB);
+        setSupportActionBar(ManualToolbar);
     }
 
     private EditText item;

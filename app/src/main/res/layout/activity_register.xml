@@ -4,10 +4,6 @@
     android:id="@+id/activity_register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     android:background="@color/colorSplashBG"
     tools:context="com.example.amk.lacara.RegisterActivity">
 
@@ -15,40 +11,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/entEmail"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:hint="Email"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:layout_above="@+id/entPass"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:layout_below="@+id/entEmail"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:id="@+id/entPass"
+        android:hint="Password"
+        android:layout_above="@+id/entConPass"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Password" />
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:layout_below="@+id/entPass"
+        android:id="@+id/entConPass"
+        android:hint="Confirm Password"
+        android:layout_above="@+id/Register"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/entConPass"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Confirm Password" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="REGISTER"
@@ -56,10 +52,23 @@
         android:layout_height="wrap_content"
         android:id="@+id/Register"
         style="@android:style/Widget.DeviceDefault.Button.Small"
-        android:layout_below="@+id/entConPass"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_marginBottom="124dp"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/RegTB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:elevation="4dp"
+        android:theme="?attr/actionBarTheme"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
