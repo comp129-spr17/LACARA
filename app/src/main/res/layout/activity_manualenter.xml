@@ -23,13 +23,13 @@
         android:layout_alignParentEnd="true" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/saveInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="26dp"
-        android:onClick="buttonOnClick"
+        android:onClick="saveInfo"
         android:text="Save" />
 
     <EditText
@@ -56,18 +56,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="119dp"
-        android:text="We have reached Manual Entry"
-        android:layout_below="@+id/priceInput"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="64dp"
-        android:layout_marginEnd="64dp" />
-
     <android.support.v7.widget.Toolbar
         android:id="@+id/ManualTB"
         android:layout_width="match_parent"
@@ -79,5 +67,27 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <Button
+        android:id="@+id/displayInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/saveInfo"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:onClick="displayInfo"
+        android:text="Display" />
+
+    <TextView
+        android:id="@+id/areaDisplay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/priceInput"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="95dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display2"
+        android:visibility="visible" />
 
 </RelativeLayout>
