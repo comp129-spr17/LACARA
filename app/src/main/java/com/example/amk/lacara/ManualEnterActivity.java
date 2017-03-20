@@ -23,11 +23,11 @@ import java.util.Map;
 
 public class ManualEnterActivity extends AppCompatActivity {
 
-     EditText item;
-     EditText location;
-     EditText price;
-     TextView areaDisplay;
-
+    EditText item;
+    EditText location;
+    EditText price;
+    TextView areaDisplay;
+    String[] itemsTest = AddPrefUtility.getItemList(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class ManualEnterActivity extends AppCompatActivity {
 
     //save entered text to button saveInfo
         public void saveInfo (View view){
+            /*
         SharedPreferences sharedPref = getSharedPreferences ("itemInfo", Context.MODE_PRIVATE );
 
         SharedPreferences.Editor editor = sharedPref.edit();
@@ -51,22 +52,28 @@ public class ManualEnterActivity extends AppCompatActivity {
             editor.putString("locName", location.getText().toString());
             editor.putString("priceName", price.getText().toString());
             editor.apply();
+            */
+            AddPrefUtility.addItem(this, item.getText().toString());
+            AddPrefUtility.addItem(this, location.getText().toString());
+            AddPrefUtility.addItem(this, price.getText().toString());
 
             Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
         }
 
         //button to test to display saved data
         public void displayInfo (View view){
+            /*
             SharedPreferences sharedPref = getSharedPreferences ("itemInfo", Context.MODE_PRIVATE);
 
             String iname = sharedPref.getString("itemName", "");
             String lname = sharedPref.getString("locName", "");
             String pname = sharedPref.getString("priceName", "");
             areaDisplay.setText(iname + " " + lname + " " + pname);
+            */
 
-
-
-
+            //I'm trying random stuff right here lol
+            String itemTest2 = itemsTest.toString();
+            areaDisplay.setText(itemTest2);
 
     }
 
