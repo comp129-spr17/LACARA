@@ -25,7 +25,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         //Create new director for gesture detection
-        detector = new GestureDetectorCompat(this,this);
+        detector = new GestureDetectorCompat(this, this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
 
@@ -40,31 +40,30 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         final Button graphs = (Button) findViewById(R.id.BTGraphs);
         final Button calendar = (Button) findViewById(R.id.BTCalendar);
         final Button manual = (Button) findViewById(R.id.BTManual);
-        camera.setOnClickListener(new View.OnClickListener()
-        {
+        camera.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent cameraIntent = new Intent(UserActivity.this, CameraActivity.class);
                 UserActivity.this.startActivity(cameraIntent);
             }
         });
         graphs.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent graphsIntent = new Intent(UserActivity.this, GraphsActivity.class);
                 UserActivity.this.startActivity(graphsIntent);
             }
         });
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
-                Intent calendarIntent = new Intent(UserActivity.this, GraphsActivity.class);
+            public void onClick(View v) {
+                Intent calendarIntent = new Intent(UserActivity.this, CalendarActivity.class);
                 UserActivity.this.startActivity(calendarIntent);
             }
         });
         manual.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v){
+            public void onClick(View v) {
                 Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
                 UserActivity.this.startActivity(manualIntent);
             }
@@ -73,32 +72,27 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     @Override
-    public boolean onDown(MotionEvent motionEvent)
-    {
+    public boolean onDown(MotionEvent motionEvent) {
         return false;
     }
 
     @Override
-    public void onShowPress(MotionEvent motionEvent)
-    {
+    public void onShowPress(MotionEvent motionEvent) {
 
     }
 
     @Override
-    public boolean onSingleTapUp(MotionEvent motionEvent)
-    {
+    public boolean onSingleTapUp(MotionEvent motionEvent) {
         return false;
     }
 
     @Override
-    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1)
-    {
+    public boolean onScroll(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
         return false;
     }
 
     @Override
-    public void onLongPress(MotionEvent motionEvent)
-    {
+    public void onLongPress(MotionEvent motionEvent) {
 
     }
 
@@ -110,13 +104,12 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             float diffX = e2.getX() - e1.getX();
             //Swipe left and right
             if (Math.abs(diffX) > Math.abs(diffY)) {
-                if(Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
-                    if (diffX > 0 ) {
+                if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_THRESHOLD_VELOCITY) {
+                    if (diffX > 0) {
                         //Swipe to right to reach this
                         Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
                         UserActivity.this.startActivity(manualIntent);
-                    }
-                    else {
+                    } else {
                         //swipe to left to reach this
                         Intent budgetOverviewIntent = new Intent(UserActivity.this, BudgetOverviewActivity.class);
                         UserActivity.this.startActivity(budgetOverviewIntent);
@@ -127,13 +120,12 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
 
             //Swipe down and up
             else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_THRESHOLD_VELOCITY) {
-                if (diffY > 0 ) {
+                if (diffY > 0) {
                     //Swipe down to reach this page
                     //still have some problems swiping down
                     Intent calendarIntent = new Intent(UserActivity.this, CalendarActivity.class);
                     UserActivity.this.startActivity(calendarIntent);
-                }
-                else {
+                } else {
                     //Swipe up to reach this page
                     Intent graphsIntent = new Intent(UserActivity.this, GraphsActivity.class);
                     UserActivity.this.startActivity(graphsIntent);
@@ -147,44 +139,34 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
+    public boolean onTouchEvent(MotionEvent event) {
         detector.onTouchEvent(event);
         return super.onTouchEvent(event);
     }
 
 
-    public boolean onSwipe(Direction direction)
-    {
+    public boolean onSwipe(Direction direction) {
 
         return false;
     }
 
 
-    public enum Direction
-    {
+    public enum Direction {
         up, down, left, right;
-        public static Direction get(double angle)
-        {
-            if (inRange(angle, 45, 135))
-            {
+
+        public static Direction get(double angle) {
+            if (inRange(angle, 45, 135)) {
                 return Direction.up;
-            }
-            else if (inRange(angle,0,45) || inRange(angle, 315, 360))
-            {
+            } else if (inRange(angle, 0, 45) || inRange(angle, 315, 360)) {
                 return Direction.right;
-            }
-            else if (inRange(angle, 225, 315))
-            {
+            } else if (inRange(angle, 225, 315)) {
                 return Direction.down;
-            }
-            else
-            {
-            return Direction.left;
+            } else {
+                return Direction.left;
             }
         }
-        public static boolean inRange(double angle, float init, float end)
-        {
+
+        public static boolean inRange(double angle, float init, float end) {
             return (angle >= init) && (angle < end);
         }
 

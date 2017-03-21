@@ -7,6 +7,12 @@
     android:layout_height="fill_parent">
 
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:text="Output remaining budget here!" />
+
     <ImageView
         android:id="@+id/slgView"
         android:layout_width="match_parent"
