@@ -27,6 +27,7 @@ public class ManualEnterActivity extends AppCompatActivity {
     EditText location;
     EditText price;
     TextView areaDisplay;
+    MyDBHandler dbHandler;
     //String[] itemsTest = AddPrefUtility.getItemList(this);
 
     @Override
@@ -35,11 +36,14 @@ public class ManualEnterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_manualenter);
         Toolbar ManualToolbar = (Toolbar) findViewById(R.id.ManualTB);
         setSupportActionBar(ManualToolbar);
+        dbHandler = new MyDBHandler(this, null, null, 1);
 
         item = (EditText) findViewById(R.id.itemName);
         location = (EditText) findViewById(R.id.locationInput);
         price = (EditText) findViewById(R.id.priceInput);
         areaDisplay = (TextView) findViewById(R.id.areaDisplay);
+
+        printDatabase();
     }
 
     //save entered text to button saveInfo
@@ -59,6 +63,10 @@ public class ManualEnterActivity extends AppCompatActivity {
 
             Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
             */
+
+            Recipe recipe = new Recipe(bmInput.getText().toString().toString());
+            dbHandler.addRecipe(recipe);
+            printDatabase();
         }
 
         //button to test to display saved data
@@ -83,6 +91,16 @@ public class ManualEnterActivity extends AppCompatActivity {
     public void buttonOnClick(View v) {
 
     }
+
+
+
+    public void printDatabase()
+    {
+        String dbString = dbHandler.databaseToString();
+        bookMarkView.setText(dbString);
+        bmInput.setText("");
+    }
+
 }
 
 
