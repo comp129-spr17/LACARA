@@ -48,23 +48,8 @@ public class ManualEnterActivity extends AppCompatActivity {
 
     //save entered text to button saveInfo
         public void saveInfo (View view){
-            /*
-        SharedPreferences sharedPref = getSharedPreferences ("itemInfo", Context.MODE_PRIVATE );
-
-        SharedPreferences.Editor editor = sharedPref.edit();
-            editor.putString("itemName", item.getText().toString());
-            editor.putString("locName", location.getText().toString());
-            editor.putString("priceName", price.getText().toString());
-            editor.apply();
-
-            AddPrefUtility.addItem(this, item.getText().toString());
-            AddPrefUtility.addItem(this, location.getText().toString());
-            AddPrefUtility.addItem(this, price.getText().toString());
-
-            Toast.makeText(this, "Saved!", Toast.LENGTH_LONG).show();
-            */
-
-            Recipe recipe = new Recipe(bmInput.getText().toString().toString());
+            String temp = price.getText().toString();
+            Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp));
             dbHandler.addRecipe(recipe);
             printDatabase();
         }
@@ -88,17 +73,15 @@ public class ManualEnterActivity extends AppCompatActivity {
     }
 
 
-    public void buttonOnClick(View v) {
-
-    }
-
 
 
     public void printDatabase()
     {
         String dbString = dbHandler.databaseToString();
-        bookMarkView.setText(dbString);
-        bmInput.setText("");
+        areaDisplay.setText(dbString);
+        item.setText("");
+        location.setText("");
+        price.setText("");
     }
 
 }

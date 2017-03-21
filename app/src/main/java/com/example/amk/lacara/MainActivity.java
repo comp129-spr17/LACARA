@@ -44,7 +44,9 @@ public class MainActivity extends AppCompatActivity {
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String useremail = entEmailLogin.getText().toString();
+                Intent intent = new Intent(MainActivity.this, SplashScreen.class);
+                MainActivity.this.startActivity(intent);
+                /*final String useremail = entEmailLogin.getText().toString();
                 final String password = entPassLogin.getText().toString();
 
                 Response.Listener<String> responseListener = new Response.Listener<String>() {
@@ -75,12 +77,13 @@ public class MainActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 
-                    }
+                 }
                 };
+
 
                 LoginRequest loginRequest = new LoginRequest(useremail, password, responseListener);
                 RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                queue.add(loginRequest);
+                queue.add(loginRequest);*/
             }
         });
     }
