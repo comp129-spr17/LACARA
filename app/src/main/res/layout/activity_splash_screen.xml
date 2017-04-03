@@ -9,9 +9,18 @@
 
     <TextView
         android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remaining Budget:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <EditText
+        android:id="@+id/editText"
         android:layout_width="match_parent"
-        android:layout_height="78dp"
-        android:text="Output remaining budget here!" />
+        android:layout_height="73dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="$0.00" />
 
     <ImageView
         android:id="@+id/slgView"
