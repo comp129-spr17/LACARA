@@ -6,19 +6,25 @@
     android:layout_height="match_parent"
     tools:context="com.example.amk.lacara.UserSettings">
 
-    <Switch
-        android:id="@+id/switch1"
+    <ToggleButton
+        android:id="@+id/theme"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Switch"
-        tools:layout_editor_absoluteX="246dp"
-        tools:layout_editor_absoluteY="109dp" />
+        android:textOff="Dark Theme"
+        android:textOn="Light Theme"
+        android:text="ToggleButton"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="45dp" />
 
-    <Button
-        android:id="@+id/Save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        tools:layout_editor_absoluteX="147dp"
-        tools:layout_editor_absoluteY="468dp" />
+    <RelativeLayout
+        android:layout_width="383dp"
+        android:layout_height="655dp"
+        android:layout_marginBottom="-23dp"
+        android:id="@+id/layout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="1dp">
+
+
+    </RelativeLayout>
+
 </android.support.constraint.ConstraintLayout>
