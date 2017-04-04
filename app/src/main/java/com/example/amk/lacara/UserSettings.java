@@ -50,7 +50,7 @@ RelativeLayout r;
         }
         else
         {
-            r.setBackgroundColor(Color.parseColor("#7A8AA1 "));
+            r.setBackgroundColor(Color.parseColor("#7A8AA1"));
         }
     }
 }
