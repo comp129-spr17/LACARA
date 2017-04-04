@@ -3,10 +3,8 @@
     package="com.example.amk.lacara">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
-        />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -25,23 +23,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"/>
-
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".UserActivity" />
-
         <activity android:name=".CameraActivity" />
-
         <activity android:name=".GraphsActivity" />
-
-        <activity android:name=".CalendarActivity"
-            android:label="Calendar"></activity>
-
-        <activity android:name=".ManualEnterActivity"
-            android:label="Manual Entry"></activity>
-
+        <activity
+            android:name=".CalendarActivity"
+            android:label="Calendar" />
+        <activity
+            android:name=".ManualEnterActivity"
+            android:label="Manual Entry" />
         <activity android:name=".BudgetOverviewActivity" />
+        <activity android:name=".SplashScreen" />
+        <activity android:name=".UserSettings"
+            android:label="Settings"
+            >
 
-        <activity android:name=".SplashScreen"></activity>
+        </activity>
+
     </application>
 
 </manifest>
