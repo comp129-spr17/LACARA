@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_user"
     android:layout_width="match_parent"
@@ -61,4 +62,15 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:text="Manual Input" />
+
+    <ImageButton
+        android:id="@+id/BTSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="69dp"
+        android:layout_marginStart="69dp"
+        android:layout_toEndOf="@+id/BTManual"
+        android:layout_toRightOf="@+id/BTManual"
+        android:adjustViewBounds="true"
+        app:srcCompat="@android:drawable/ic_menu_preferences" />
 </RelativeLayout>

@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.View.OnTouchListener;
+import android.widget.ImageButton;
 
 
 public class UserActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -40,6 +41,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         final Button graphs = (Button) findViewById(R.id.BTGraphs);
         final Button calendar = (Button) findViewById(R.id.BTCalendar);
         final Button manual = (Button) findViewById(R.id.BTManual);
+        final ImageButton settings = (ImageButton) findViewById(R.id.BTSettings);
+
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +72,13 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             }
         });
 
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent settingsIntent = new Intent(UserActivity.this, UserSettings.class);
+                UserActivity.this.startActivity(settingsIntent);
+            }
+        });
     }
 
     @Override
