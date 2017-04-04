@@ -6,6 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import android.util.Log;
+
 
 public class MyDBHandler extends SQLiteOpenHelper {
 
@@ -16,6 +22,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_RECIPENAME = "_recipename";
     public static final String COLUMN_LOCATION = "_location";
     public static final String COLUMN_PRICE = "_price";
+    public static final String COLUMN_DATE = "_date";
+    public static final String COLUMN_CAT = "_Cat";
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -25,9 +33,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String query =  "CREATE TABLE " + TABLE_RECIPES + "(" +
                 COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                COLUMN_RECIPENAME + " TEXT " +
-                COLUMN_LOCATION + " TEXT " +
-                COLUMN_PRICE + " DOUBLE " +
+                COLUMN_RECIPENAME + " TEXT, " +
+                COLUMN_LOCATION + " TEXT, " +
+                COLUMN_PRICE + " DOUBLE, " +
+                COLUMN_DATE + " TEXT, " +
+                COLUMN_CAT + " TEXT " +
                 ");";
         db.execSQL(query);
 
@@ -42,10 +52,15 @@ public class MyDBHandler extends SQLiteOpenHelper {
     //Add a new row to database
     public void addRecipe(Data recipe)
     {
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        String formattedDate = df.format(c.getTime());
         ContentValues values = new ContentValues();
         values.put(COLUMN_RECIPENAME, recipe.get_itemname());
-        //values.put(COLUMN_LOCATION, recipe.get_location());
-        //values.put(COLUMN_PRICE, recipe.get_price());
+        values.put(COLUMN_LOCATION, recipe.get_location());
+        values.put(COLUMN_PRICE, recipe.get_price());
+        values.put(COLUMN_DATE, formattedDate);
+        values.put(COLUMN_CAT, "Cat");
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_RECIPES, null, values);
         db.close();
@@ -65,29 +80,62 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         //Cursor point to the location in your result
         Cursor recordSet = db.rawQuery(query, null);
-        //Cursor recordSet1 = db.rawQuery(query, null);
-        //Cursor recordSet2 = db.rawQuery(query, null);
-        //Move to the first row in your results
         recordSet.moveToFirst();
         recordSet.getColumnIndex("_recipename");
-        //recordSet1.moveToFirst();
-        //recordSet1.getColumnIndex("_location");
-        //recordSet2.moveToFirst();
-        //recordSet2.getColumnIndex("_price");
         //Position after the last row means the end of the results
 
-        //Log.d("myTag", "This is my message " + recordSet.getColumnIndex("_recipename"));
+
         while (!recordSet.isAfterLast()) {
             // null could happen if we used our empty constructor
             if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
                 dbString += recordSet.getString(recordSet.getColumnIndex("_recipename"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_location"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_price"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_date"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_Cat"));
                 dbString += "\n";
             }
             recordSet.moveToNext();
-           // recordSet1.moveToNext();
-            //recordSet2.moveToNext();
         }
         db.close();
         return dbString;
+    }
+
+    public ArrayList<String> singleResult(String selectedDate)
+    {
+        String dbString = "";
+        ArrayList<String> list = new ArrayList<String>();
+        int x = 0;
+        SQLiteDatabase db = getWritableDatabase();
+        Log.d("tag", selectedDate);
+        String query = "SELECT * FROM " + TABLE_RECIPES + " WHERE " + COLUMN_DATE + " = " + "\"" + selectedDate + "\"";
+        Log.d("tag", query);
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        recordSet.getColumnIndex("_recipename");
+        while (!recordSet.isAfterLast()) {
+            // null could happen if we used our empty constructor
+            if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
+                dbString += recordSet.getString(recordSet.getColumnIndex("_recipename"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_location"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_price"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_date"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_Cat"));
+                dbString += "\n";
+            }
+            list.add(dbString);
+            dbString = "";
+            recordSet.moveToNext();
+        }
+        db.close();
+        return list;
     }
 }
