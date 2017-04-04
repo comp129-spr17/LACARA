@@ -51,7 +51,7 @@
         android:ems="10"
         android:hint="Price"
         android:inputType="textPersonName"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="132dp"
         android:layout_below="@+id/locationInput"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
@@ -88,5 +88,27 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="95dp"
         android:visibility="visible" />
+
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/locationInput"
+        android:layout_alignRight="@+id/locationInput"
+        android:layout_below="@+id/locationInput"
+        android:ems="10"
+        android:inputType="date"
+        android:text="Date" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/editText2"
+        android:ems="10"
+        android:inputType="time"
+        android:text="Time" />
 
 </RelativeLayout>
