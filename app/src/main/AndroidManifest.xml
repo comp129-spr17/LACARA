@@ -35,12 +35,10 @@
             android:label="Manual Entry" />
         <activity android:name=".BudgetOverviewActivity" />
         <activity android:name=".SplashScreen" />
-        <activity android:name=".UserSettings"
-            android:label="Settings"
-            >
-
-        </activity>
-
+        <activity
+            android:name=".UserSettings"
+            android:label="Settings"></activity>
+        <activity android:name=".ItemViews"></activity>
     </application>
 
 </manifest>
