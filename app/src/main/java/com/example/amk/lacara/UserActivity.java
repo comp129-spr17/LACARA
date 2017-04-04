@@ -1,6 +1,8 @@
 package com.example.amk.lacara;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -41,6 +43,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         final Button graphs = (Button) findViewById(R.id.BTGraphs);
         final Button calendar = (Button) findViewById(R.id.BTCalendar);
         final Button manual = (Button) findViewById(R.id.BTManual);
+        final Button alert = (Button) findViewById(R.id.BTAlert);
+
         final ImageButton settings = (ImageButton) findViewById(R.id.BTSettings);
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +82,33 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 Intent settingsIntent = new Intent(UserActivity.this, UserSettings.class);
                 UserActivity.this.startActivity(settingsIntent);
             }
+        });
+
+        alert.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alert = new AlertDialog.Builder(UserActivity.this);
+                alert.setMessage("Warning ! you spend too much this month!");
+                alert.setCancelable(false);
+
+                alert.setPositiveButton(
+                        "Understand",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alert.setNegativeButton(
+                        "Don't Care",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = alert.create();
+                alert11.show();
+                }
         });
     }
 

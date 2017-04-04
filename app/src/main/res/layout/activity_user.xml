@@ -73,4 +73,12 @@
         android:layout_toRightOf="@+id/BTManual"
         android:adjustViewBounds="true"
         app:srcCompat="@android:drawable/ic_menu_preferences" />
+
+    <Button
+        android:id="@+id/BTAlert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Alert" />
 </RelativeLayout>
