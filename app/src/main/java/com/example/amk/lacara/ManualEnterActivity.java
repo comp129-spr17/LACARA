@@ -26,6 +26,7 @@ public class ManualEnterActivity extends AppCompatActivity {
     EditText item;
     EditText location;
     EditText price;
+    EditText date;
     TextView areaDisplay;
     MyDBHandler dbHandler;
     //String[] itemsTest = AddPrefUtility.getItemList(this);
@@ -41,7 +42,9 @@ public class ManualEnterActivity extends AppCompatActivity {
         item = (EditText) findViewById(R.id.itemName);
         location = (EditText) findViewById(R.id.locationInput);
         price = (EditText) findViewById(R.id.priceInput);
+        date = (EditText) findViewById(R.id.entDate);
         areaDisplay = (TextView) findViewById(R.id.areaDisplay);
+
 
         printDatabase();
     }
@@ -49,6 +52,7 @@ public class ManualEnterActivity extends AppCompatActivity {
     //save entered text to button saveInfo
         public void saveInfo (View view){
             String temp = price.getText().toString();
+            String temp2 = date.getText().toString();
             Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp));
             dbHandler.addRecipe(recipe);
             printDatabase();
@@ -82,6 +86,7 @@ public class ManualEnterActivity extends AppCompatActivity {
         item.setText("");
         location.setText("");
         price.setText("");
+        date.setText("");
     }
 
 }
