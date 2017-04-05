@@ -22,7 +22,6 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Item"
-        android:layout_alignBaseline="@+id/displayName"
         android:layout_alignBottom="@+id/displayName"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -31,53 +30,63 @@
         android:id="@+id/editText3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText2"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="26dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Date" />
+        android:text="Location"
+        android:layout_below="@+id/editText2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/editText4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/editText3"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Price" />
+        android:text="Date"
+        android:layout_below="@+id/editText3"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/displayDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/editText4"
+        android:text="TextView"
+        android:layout_above="@+id/editText16"
         android:layout_alignLeft="@+id/displayName"
-        android:layout_alignStart="@+id/displayName"
-        android:text="TextView" />
+        android:layout_alignStart="@+id/displayName" />
 
     <TextView
         android:id="@+id/displayPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText4"
+        android:text="TextView"
+        android:layout_alignBottom="@+id/editText16"
         android:layout_alignLeft="@+id/displayDate"
-        android:layout_alignStart="@+id/displayDate"
-        android:text="TextView" />
+        android:layout_alignStart="@+id/displayDate" />
 
-    <TextView
-        android:id="@+id/displayTest"
+    <EditText
+        android:id="@+id/editText16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/editText4"
-        android:layout_alignRight="@+id/editText4"
+        android:layout_marginTop="23dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Price"
         android:layout_below="@+id/editText4"
-        android:layout_marginEnd="18dp"
-        android:layout_marginRight="18dp"
-        android:layout_marginTop="67dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/displayLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/editText3"
+        android:layout_alignEnd="@+id/displayDate"
+        android:layout_alignRight="@+id/displayDate"
         android:text="TextView" />
+
 </RelativeLayout>

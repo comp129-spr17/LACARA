@@ -1,7 +1,11 @@
 package com.example.amk.lacara;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -12,9 +16,11 @@ import android.util.Log;
 
 public class ItemViews extends AppCompatActivity {
     TextView areaDisplay;
-    TextView name;
-    TextView date;
-    TextView price;
+    EditText name;
+    EditText date;
+    EditText price;
+    EditText location;
+    int result;
     ArrayList<String> infoList = new ArrayList<String>();
     MyDBHandler dbHandler;
     @Override
@@ -22,18 +28,55 @@ public class ItemViews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_views);
         String[] temp = getIntent().getStringExtra("item").split(" ");
-        areaDisplay = (TextView) findViewById(R.id.displayTest);
-        name = (TextView) findViewById(R.id.displayName);
-        date = (TextView) findViewById(R.id.displayDate);
-        price = (TextView) findViewById(R.id.displayPrice);
+        //areaDisplay = (TextView) findViewById(R.id.displayTest);
+        name = (EditText) findViewById(R.id.displayItem);
+        date = (EditText) findViewById(R.id.displayDate);
+        price = (EditText) findViewById(R.id.displayPrice);
+        location = (EditText) findViewById(R.id.displayLocation);
         dbHandler = new MyDBHandler(this, null, null, 1);
         Log.d("test", temp[0]);
-        int result = Integer.parseInt(temp[0]);
+        result = Integer.parseInt(temp[0]);
 
         infoList.addAll(dbHandler.itemViewDisplay(result));
         name.setText(infoList.get(0));
+        location.setText(infoList.get(1));
         date.setText(infoList.get(2));
         price.setText(infoList.get(3));
+        final Button edit = (Button) findViewById(R.id.editInfo);
 
+        edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(ifChange(name.getText().toString(),infoList.get(0)))
+                {
+                    dbHandler.updateSingleDate("_recipename", name.getText().toString(), result);
+                }
+
+               if(ifChange(location.getText().toString(),infoList.get(1)))
+                {
+                    dbHandler.updateSingleDate("_location", location.getText().toString(), result);
+                }
+
+                if(ifChange(date.getText().toString(),infoList.get(2)))
+                {
+                    dbHandler.updateSingleDate("_date", date.getText().toString(), result);
+                }
+
+                if(ifChange(price.getText().toString(),infoList.get(3)))
+                {
+                    dbHandler.updateSingleDate("_price", price.getText().toString(), result);
+                }
+            }
+        });
+    }
+
+    boolean ifChange(String x, String x1)
+    {
+        if(x != x1)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

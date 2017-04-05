@@ -156,4 +156,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
         return list;
     }
+
+    public boolean updateSingleDate(String x, String newInfo, int id)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put(x, newInfo);
+        return db.update(TABLE_RECIPES, args, COLUMN_ID + "=" + id, null) > 0;
+
+    }
 }
