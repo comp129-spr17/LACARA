@@ -39,13 +39,18 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         String useremail = intent.getStringExtra("useremail");
 
         String message = useremail + "is logged in!";
-        final Button camera = (Button) findViewById(R.id.BTcamera);
-        final Button graphs = (Button) findViewById(R.id.BTGraphs);
-        final Button calendar = (Button) findViewById(R.id.BTCalendar);
-        final Button manual = (Button) findViewById(R.id.BTManual);
-        final Button alert = (Button) findViewById(R.id.BTAlert);
+//        final Button camera = (Button) findViewById(R.id.BTcamera);
+//        final Button graphs = (Button) findViewById(R.id.BTGraphs);
+//        final Button calendar = (Button) findViewById(R.id.BTCalendar);
+//        final Button manual = (Button) findViewById(R.id.BTManual);
+//        final Button alert = (Button) findViewById(R.id.BTAlert);
 
         final ImageButton settings = (ImageButton) findViewById(R.id.BTSettings);
+        final ImageButton camera = (ImageButton) findViewById(R.id.BTCamera);
+        final ImageButton graphs = (ImageButton) findViewById(R.id.BTGRAPHS);
+        final ImageButton calendar = (ImageButton) findViewById(R.id.BTCalendar);
+        final ImageButton manual = (ImageButton) findViewById(R.id.BTManual);
+        final ImageButton alert = (ImageButton) findViewById(R.id.BTAlert);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override

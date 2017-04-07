@@ -12,73 +12,64 @@
     android:background="@color/colorSplashBG"
     tools:context="com.example.amk.lacara.UserActivity">
 
-    <TextView
-        android:text="This is where stuff happens"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <Button
-        android:text="CAMERA"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="102dp"
-        android:id="@+id/BTcamera"
-        android:layout_alignLeft="@+id/BTCalendar"
-        android:layout_alignStart="@+id/BTCalendar"
-        android:layout_alignRight="@+id/BTCalendar"
-        android:layout_alignEnd="@+id/BTCalendar" />
-
-    <Button
-        android:text="GO TO GRAPHS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/BTGraphs"
-        android:layout_marginTop="63dp"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        android:text="GO TO CALENDAR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/BTGraphs"
-        android:layout_alignLeft="@+id/BTGraphs"
-        android:layout_alignStart="@+id/BTGraphs"
-        android:layout_marginTop="11dp"
-        android:id="@+id/BTCalendar"
-        android:layout_alignRight="@+id/BTGraphs"
-        android:layout_alignEnd="@+id/BTGraphs" />
-
-    <Button
-        android:id="@+id/BTManual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:text="Manual Input" />
-
     <ImageButton
         android:id="@+id/BTSettings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="69dp"
-        android:layout_marginStart="69dp"
-        android:layout_toEndOf="@+id/BTManual"
-        android:layout_toRightOf="@+id/BTManual"
         android:adjustViewBounds="true"
-        app:srcCompat="@android:drawable/ic_menu_preferences" />
+        app:srcCompat="@android:drawable/ic_menu_preferences"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
-    <Button
+    <ImageButton
+        android:id="@+id/BTCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:layout_alignTop="@+id/BTManual"
+        android:layout_alignLeft="@+id/BTAlert"
+        android:layout_alignStart="@+id/BTAlert" />
+
+    <ImageButton
+        android:id="@+id/BTManual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        android:layout_alignTop="@+id/BTCalendar"
+        android:layout_alignLeft="@+id/BTGRAPHS"
+        android:layout_alignStart="@+id/BTGRAPHS" />
+
+    <ImageButton
         android:id="@+id/BTAlert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Alert" />
+        app:srcCompat="@android:drawable/ic_dialog_alert"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_alignTop="@+id/BTGRAPHS"
+        android:layout_toRightOf="@+id/BTGRAPHS"
+        android:layout_toEndOf="@+id/BTGRAPHS" />
+
+    <ImageButton
+        android:id="@+id/BTCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        android:layout_below="@+id/BTSettings"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="77dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="82dp" />
+
+    <ImageButton
+        android:id="@+id/BTGRAPHS"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/BTCalendar"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>
