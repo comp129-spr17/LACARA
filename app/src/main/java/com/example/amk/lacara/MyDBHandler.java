@@ -18,6 +18,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME= "recipes.db";
     public static final String TABLE_RECIPES = "recipes";
+    public static final String DATABASE_SETTING_NAME = "settings.db";
+    public static final String TABLE_SETTINGS = "settings";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_RECIPENAME = "_recipename";
     public static final String COLUMN_LOCATION = "_location";
@@ -69,16 +71,27 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_RECIPENAME, recipe.get_itemname());
         values.put(COLUMN_LOCATION, recipe.get_location());
         values.put(COLUMN_PRICE, recipe.get_price());
-        values.put(COLUMN_NAME, recipe.get_name());
-        values.put(COLUMN_NOTIF, recipe.get_notifcations());
-        values.put(COLUMN_PASS, recipe.get_password());
-        values.put(COLUMN_BUDGET, recipe.get_budget());
         values.put(COLUMN_DATE, formattedDate);
         values.put(COLUMN_CAT, "Cat");
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_RECIPES, null, values);
         db.close();
     }
+
+    //Adding user settings
+    public void addSettings(SettingsData user)
+    {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_NAME, user.get_name());
+        values.put(COLUMN_NOTIF, user.get_notifications());
+        values.put(COLUMN_PASS, user.get_password());
+        values.put(COLUMN_BUDGET, user.get_budget());
+        values.put(COLUMN_CAT, "Cat");
+        SQLiteDatabase db = getWritableDatabase();
+        db.insert(TABLE_SETTINGS, null, values);
+        db.close();
+    }
+
 
     public void deleteRecipe(String recipeName)
     {
