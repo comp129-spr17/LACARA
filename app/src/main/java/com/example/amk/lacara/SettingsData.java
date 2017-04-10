@@ -9,7 +9,7 @@ public class SettingsData {
     private int _id;
     private int _budget;
 
-    public UserSettingsData(String name, String location, double price)
+    public UserSettingsData(String name, String location, double pric)
     {
     }
 
