@@ -27,6 +27,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_NOTIF = "_Notifications";
     public static final String COLUMN_NAME = " _Name ";
     public static final String COLUMN_PASS = " _Password ";
+    public static final String COLUMN_BUDGET = " _budget ";
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -44,6 +45,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_NOTIF + " INTEGER " +
                 COLUMN_NAME + " TEXT " +
                 COLUMN_PASS + " TEXT " +
+                COLUMN_BUDGET + " DOUBLE " +
 
 
                 ");";
@@ -67,6 +69,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_RECIPENAME, recipe.get_itemname());
         values.put(COLUMN_LOCATION, recipe.get_location());
         values.put(COLUMN_PRICE, recipe.get_price());
+        values.put(COLUMN_NAME, recipe.get_name());
+        values.put(COLUMN_NOTIF, recipe.get_notifcations());
+        values.put(COLUMN_PASS, recipe.get_password());
+        values.put(COLUMN_BUDGET, recipe.get_budget());
         values.put(COLUMN_DATE, formattedDate);
         values.put(COLUMN_CAT, "Cat");
         SQLiteDatabase db = getWritableDatabase();
@@ -104,6 +110,14 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 dbString += " ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_date"));
                 dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_notifications"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_budget"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_name"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_password"));
+                dbString += " ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_Cat"));
                 dbString += "\n";
             }
@@ -135,6 +149,14 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 dbString += recordSet.getString(recordSet.getColumnIndex("_price"));
                 dbString += " ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_date"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_notifications"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_budget"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_name"));
+                dbString += " ";
+                dbString += recordSet.getString(recordSet.getColumnIndex("_password"));
                 dbString += " ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_Cat"));
                 dbString += "\n";
