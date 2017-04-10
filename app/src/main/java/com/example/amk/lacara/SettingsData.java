@@ -8,9 +8,20 @@ public class SettingsData {
 
     private int _id;
     private int _budget;
+    private String _Name;
+    private String _Password;
+    private int _Notifications;
 
-    public UserSettingsData(String name, String location, double price)
+
+    public SettingsData(int id, int budget, String name, String pass, int notif)
     {
+        this._budget=budget;
+        this._id=id;
+        this._Name=name;
+        this._Password=pass;
+        this._Notifications=notif;
+
+
     }
 
 }
