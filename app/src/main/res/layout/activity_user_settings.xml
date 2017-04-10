@@ -93,4 +93,16 @@
             android:layout_below="@+id/theme"
             android:text="LOGOUT" />
 
+    <EditText
+        android:id="@+id/editText2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText10"
+        android:layout_alignEnd="@+id/editText7"
+        android:layout_alignRight="@+id/editText7"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Budget" />
+
 </RelativeLayout>
