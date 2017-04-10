@@ -16,48 +16,49 @@
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/btLogin"
-        android:layout_marginTop="25dp"
         android:adjustViewBounds="false"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/suivrelogo" />
+        app:srcCompat="@drawable/suivrelogo"
+        android:layout_marginBottom="29dp"
+        android:layout_alignBottom="@+id/entPassLogin"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textEmailAddress"
         android:ems="10"
-        android:layout_alignParentTop="true"
+        android:id="@+id/entEmailLogin"
+        android:hint="Email"
+        android:layout_above="@+id/entPassLogin"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/entEmailLogin"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Email" />
+        android:layout_alignParentEnd="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:layout_below="@+id/entEmailLogin"
+        android:id="@+id/entPassLogin"
+        android:hint="Password"
+        android:layout_marginBottom="114dp"
+        android:layout_above="@+id/btLogin"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/entPassLogin"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:hint="Password" />
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:text="LOGIN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/entPassLogin"
         android:id="@+id/btLogin"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="78dp"
+        android:layout_marginStart="78dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -65,11 +66,11 @@
         android:text="REGISTER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/btLogin"
-        android:layout_alignLeft="@+id/btLogin"
-        android:layout_alignStart="@+id/btLogin"
         android:id="@+id/btReg"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btLogin"
+        android:layout_toEndOf="@+id/btLogin" />
 
 </RelativeLayout>
