@@ -35,6 +35,10 @@ RelativeLayout r;
         r= (RelativeLayout) findViewById(R.id.layout);
 
         t.setOnCheckedChangeListener(this);
+
+        //Need to add the new variables here for Budget, Email, Name, Notifications, Password
+
+
     }
 
     @Override
@@ -47,5 +51,12 @@ RelativeLayout r;
         {
             r.setBackgroundColor(Color.parseColor("#7A8AA1"));
         }
+    }
+    public void saveInfo (View view){
+       /* String temp = price.getText().toString();
+        String temp2 = date.getText().toString();
+        Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp));
+        dbHandler.addRecipe(recipe);
+        printDatabase(); */
     }
 }

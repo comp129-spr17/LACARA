@@ -7,7 +7,17 @@
     android:background="@color/colorSplashBG"
     tools:context="com.example.amk.lacara.UserSettings">
 
-        <EditText
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:onClick="saveInfo"
+        android:text="Save" />
+
+    <EditText
             android:id="@+id/editText7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -104,5 +114,14 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Budget" />
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:onClick="saveInfo"
+        android:text="Save" />
 
 </RelativeLayout>
