@@ -24,6 +24,9 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_PRICE = "_price";
     public static final String COLUMN_DATE = "_date";
     public static final String COLUMN_CAT = "_Cat";
+    public static final String COLUMN_NOTIF = "_Notifications";
+    public static final String COLUMN_NAME = " _Name ";
+    public static final String COLUMN_PASS = " _Password ";
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -38,6 +41,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_PRICE + " DOUBLE, " +
                 COLUMN_DATE + " TEXT, " +
                 COLUMN_CAT + " TEXT " +
+                COLUMN_NOTIF + " INTEGER " +
+                COLUMN_NAME + " TEXT " +
+                COLUMN_PASS + " TEXT " +
+
+
                 ");";
         db.execSQL(query);
 

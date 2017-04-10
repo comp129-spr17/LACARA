@@ -17,7 +17,9 @@ import android.support.v7.widget.Toolbar;
 
 public class UserSettings extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
 
-// add input variables here
+
+
+
 
 int dark = Color.parseColor("#7A8AA1");
 ToggleButton t;
@@ -33,13 +35,6 @@ RelativeLayout r;
         r= (RelativeLayout) findViewById(R.id.layout);
 
         t.setOnCheckedChangeListener(this);
-    }
-
-//save user settings button
-    public void saveInfo (View view){
-        SharedPreferences sharedPref = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-
     }
 
     @Override
