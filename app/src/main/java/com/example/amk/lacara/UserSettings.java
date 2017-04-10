@@ -1,7 +1,5 @@
 package com.example.amk.lacara;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -37,7 +35,11 @@ RelativeLayout r;
         t.setOnCheckedChangeListener(this);
 
         //Need to add the new variables here for Budget, Email, Name, Notifications, Password
-
+        name = (EditText) findViewById(R.id.notifications);
+        budget = (EditText) findViewById(R.id.budget);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
+        notifications = (TextView) findViewById(R.id.notifications);
 
     }
 
@@ -53,10 +55,10 @@ RelativeLayout r;
         }
     }
     public void saveInfo (View view){
-       /* String temp = price.getText().toString();
+        String temp = price.getText().toString();
         String temp2 = date.getText().toString();
-        Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp));
-        dbHandler.addRecipe(recipe);
-        printDatabase(); */
+        SettingsData user = new SettingsData(name.getText().toString().toString(),password.getText().toString().toString(),Double.parseDouble(temp));
+        dbHandler.addRecipe(user);
+        printDatabase();
     }
 }

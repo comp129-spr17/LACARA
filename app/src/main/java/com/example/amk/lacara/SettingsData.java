@@ -13,8 +13,7 @@ public class SettingsData {
     private int _notifications;
 
 
-    public SettingsData(int id, double budget, String name, String password, int notif,)
-    {
+    public SettingsData(int id, double budget, String name, String password, int notif) {
         this._budget=budget;
         this._id=id;
         this._name=name;
@@ -35,6 +34,10 @@ public class SettingsData {
         return _notifications;
     }
 
+    public String get_password(){
+        return _password;
+    }
+
     public void set_id(int _id) {
         this._id=_id;
     }
@@ -48,8 +51,7 @@ public class SettingsData {
     public void set_password(String _password){
         this._password=_password;
     }
-    public void set_notifications(int _notifications)
-    {
+    public void set_notifications(int _notifications) {
         this._notifications=_notifications;
     }
 
