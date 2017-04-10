@@ -35,7 +35,7 @@ RelativeLayout r;
         t.setOnCheckedChangeListener(this);
 
         //Need to add the new variables here for Budget, Email, Name, Notifications, Password
-        name = (EditText) findViewById(R.id.notifications);
+        name = (EditText) findViewById(R.id.name);
         budget = (EditText) findViewById(R.id.budget);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);

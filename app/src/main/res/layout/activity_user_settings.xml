@@ -54,20 +54,7 @@
         android:text="Notifications"
         tools:layout_editor_absoluteY="190dp" />
 
-        <EditText
-            android:id="@+id/notifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/notifications"
-            android:layout_alignRight="@+id/notifications"
-            android:layout_below="@+id/notifications"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Account Settings"
-            tools:layout_editor_absoluteY="233dp"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <ToggleButton
+    <ToggleButton
             android:id="@+id/theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -126,5 +113,18 @@
         android:layout_marginBottom="26dp"
         android:onClick="saveInfo"
         android:text="Save" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/notifications"
+        android:layout_alignRight="@+id/notifications"
+        android:layout_below="@+id/notifications"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name" />
 
 </RelativeLayout>
