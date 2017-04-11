@@ -5,20 +5,18 @@ package com.example.amk.lacara;
  */
 
 public class SettingsData {
-
-    private int _id;
+;
     private double _budget;
     private String _name;
     private String _password;
-    private int _notifications;
+    //private int _notifications;
 
 
-    public SettingsData(int id, double budget, String name, String password, int notif) {
+    public SettingsData(double budget, String name, String password) {
         this._budget=budget;
-        this._id=id;
         this._name=name;
         this._password=password;
-        this._notifications=notif;
+       // this._notifications=notif;
     }
 
     public double get_budget(){
@@ -29,18 +27,18 @@ public class SettingsData {
         return _name;
     }
 
-    public int get_notifications()
+   /* public int get_notifications()
     {
         return _notifications;
-    }
+    }  */
 
     public String get_password(){
         return _password;
     }
 
-    public void set_id(int _id) {
+ /*   public void set_id(int _id) {
         this._id=_id;
-    }
+    } */
     public void set_budget(double _budget){
         this._budget=_budget;
 
@@ -51,9 +49,9 @@ public class SettingsData {
     public void set_password(String _password){
         this._password=_password;
     }
-    public void set_notifications(int _notifications) {
+   /* public void set_notifications(int _notifications) {
         this._notifications=_notifications;
-    }
+    } */
 
 }
 

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.ToggleButton;
 import android.support.v7.widget.Toolbar;
@@ -15,13 +16,21 @@ import android.support.v7.widget.Toolbar;
 
 public class UserSettings extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
 
+    EditText name;
+    EditText budget;
+    EditText password;
+    EditText email;
+   // EditText Notification;
 
+    MyDBHandler dbHandler;
 
 
 
 int dark = Color.parseColor("#7A8AA1");
 ToggleButton t;
 RelativeLayout r;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,12 +43,11 @@ RelativeLayout r;
 
         t.setOnCheckedChangeListener(this);
 
-        //Need to add the new variables here for Budget, Email, Name, Notifications, Password
         name = (EditText) findViewById(R.id.name);
         budget = (EditText) findViewById(R.id.budget);
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
-        notifications = (TextView) findViewById(R.id.notifications);
+        //notifications = (Ed) findViewById(R.id.notifications);
 
     }
 
@@ -55,10 +63,8 @@ RelativeLayout r;
         }
     }
     public void saveInfo (View view){
-        String temp = price.getText().toString();
-        String temp2 = date.getText().toString();
-        SettingsData user = new SettingsData(name.getText().toString().toString(),password.getText().toString().toString(),Double.parseDouble(temp));
-        dbHandler.addRecipe(user);
-        printDatabase();
+        String temp = budget.getText().toString();
+        SettingsData user = new SettingsData(Double.parseDouble(temp),name.getText().toString().toString(),password.getText().toString().toString());
+        dbHandler.addSettings(user);
     }
 }
