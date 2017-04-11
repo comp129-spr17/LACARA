@@ -1,5 +1,6 @@
 package com.example.amk.lacara;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -80,11 +81,16 @@ public class CalendarActivity extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id)
         {
-            ViewGroup vg = (ViewGroup)view;
+            /*ViewGroup vg = (ViewGroup)view;
             TextView ty = (TextView)vg.findViewById(R.id.txtitem);
             String temp = "" + position;
             Log.d("test", temp);
-            Toast.makeText(CalendarActivity.this, ty.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(CalendarActivity.this, ty.getText().toString(), Toast.LENGTH_SHORT).show();*/
+            if(position != 0) {
+                Intent settingsIntent = new Intent(CalendarActivity.this, ItemViews.class);
+                settingsIntent.putExtra("item", arrayList.get(position));
+                CalendarActivity.this.startActivity(settingsIntent);
+            }
         }
     }
 }

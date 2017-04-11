@@ -105,6 +105,22 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return dbString;
     }
 
+    public ArrayList<String> itemViewDisplay(int id)
+    {
+        String dbString = "";
+        ArrayList<String> list = new ArrayList<String>();
+        int x = 0;
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT * FROM " + TABLE_RECIPES + " WHERE " + COLUMN_ID + " = " + id;
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        list.add(recordSet.getString(recordSet.getColumnIndex("_recipename")));
+        list.add(recordSet.getString(recordSet.getColumnIndex("_location")));
+        list.add(recordSet.getString(recordSet.getColumnIndex("_date")));
+        list.add(recordSet.getString(recordSet.getColumnIndex("_price")));
+        return list;
+    }
+
     public ArrayList<String> singleResult(String selectedDate)
     {
         String dbString = "";
@@ -120,6 +136,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
         while (!recordSet.isAfterLast()) {
             // null could happen if we used our empty constructor
             if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
+                dbString += recordSet.getString(recordSet.getColumnIndex("_id"));
+                dbString += " : ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_recipename"));
                 dbString += " ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_location"));
@@ -137,5 +155,14 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
         db.close();
         return list;
+    }
+
+    public boolean updateSingleDate(String x, String newInfo, int id)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put(x, newInfo);
+        return db.update(TABLE_RECIPES, args, COLUMN_ID + "=" + id, null) > 0;
+
     }
 }
