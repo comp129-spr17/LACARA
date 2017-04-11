@@ -20,7 +20,6 @@ public class UserSettings extends AppCompatActivity implements CompoundButton.On
     EditText budget;
     EditText password;
     EditText email;
-   // EditText Notification;
 
     MyDBHandler dbHandler;
 
