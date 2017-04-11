@@ -11,22 +11,16 @@
     android:background="@color/colorSplashBG"
     tools:context="com.example.amk.lacara.GraphsActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar3"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="50dp" />
-
-    <TextView
-        android:id="@+id/textView4"
+    <RelativeLayout
+        android:id="@+id/relativelayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Graph Display"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_height="wrap_content">
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chart"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
 </RelativeLayout>

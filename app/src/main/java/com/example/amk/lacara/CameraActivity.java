@@ -62,12 +62,12 @@ public class CameraActivity extends AppCompatActivity {
         // get permission of read external storage permission
         verifyStoragePermissions(CameraActivity.this);
         setContentView(R.layout.activity_camera);
-        Button click = (Button)findViewById(R.id.capture);
+        dispatchTakePictureIntent();
         result = (ImageView)findViewById(R.id.captureView);
 
     }
 
-    public void dispatchTakePictureIntent(View view) {
+    public void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             File photoFile = null;

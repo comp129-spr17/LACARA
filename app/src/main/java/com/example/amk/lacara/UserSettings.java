@@ -1,12 +1,11 @@
 package com.example.amk.lacara;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.ToggleButton;
 import android.support.v7.widget.Toolbar;
@@ -17,11 +16,21 @@ import android.support.v7.widget.Toolbar;
 
 public class UserSettings extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
 
-// add input variables here
+    EditText name;
+    EditText budget;
+    EditText password;
+    EditText email;
+   // EditText Notification;
+
+    MyDBHandler dbHandler;
+
+
 
 int dark = Color.parseColor("#7A8AA1");
 ToggleButton t;
 RelativeLayout r;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +42,12 @@ RelativeLayout r;
         r= (RelativeLayout) findViewById(R.id.layout);
 
         t.setOnCheckedChangeListener(this);
-    }
 
-//save user settings button
-    public void saveInfo (View view){
-        SharedPreferences sharedPref = getSharedPreferences("userSettings", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
+        name = (EditText) findViewById(R.id.name);
+        budget = (EditText) findViewById(R.id.budget);
+        email = (EditText) findViewById(R.id.email);
+        password = (EditText) findViewById(R.id.password);
+        //notifications = (Ed) findViewById(R.id.notifications);
 
     }
 
@@ -52,5 +61,10 @@ RelativeLayout r;
         {
             r.setBackgroundColor(Color.parseColor("#7A8AA1"));
         }
+    }
+    public void saveInfo (View view){
+        String temp = budget.getText().toString();
+        SettingsData user = new SettingsData(Double.parseDouble(temp),name.getText().toString().toString(),password.getText().toString().toString());
+        dbHandler.addSettings(user);
     }
 }

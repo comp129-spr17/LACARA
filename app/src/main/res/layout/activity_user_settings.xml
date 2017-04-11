@@ -7,8 +7,18 @@
     android:background="@color/colorSplashBG"
     tools:context="com.example.amk.lacara.UserSettings">
 
-        <EditText
-            android:id="@+id/editText7"
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:onClick="saveInfo"
+        android:text="Save" />
+
+    <EditText
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -21,54 +31,32 @@
             android:layout_marginTop="127dp" />
 
         <EditText
-            android:id="@+id/editText10"
+            android:id="@+id/password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Password"
             tools:layout_editor_absoluteY="147dp"
-            android:layout_below="@+id/editText7"
+            android:layout_below="@+id/email"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true" />
 
-        <EditText
-            android:id="@+id/editText11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Display"
-            tools:layout_editor_absoluteY="190dp"
-            android:layout_below="@+id/editText10"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true" />
-
-        <EditText
-            android:id="@+id/editText12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/editText11"
-            android:layout_alignRight="@+id/editText11"
-            android:layout_below="@+id/editText11"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Account Settings"
-            tools:layout_editor_absoluteY="233dp"
-            tools:layout_editor_absoluteX="8dp" />
-
-        <ToggleButton
+    <ToggleButton
             android:id="@+id/theme"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/editText12"
             android:text="ToggleButton"
             android:textOff="Light Theme"
             android:textOn="Dark Theme"
             tools:layout_editor_absoluteY="423dp"
-            tools:layout_editor_absoluteX="16dp" />
+            tools:layout_editor_absoluteX="16dp"
+            android:layout_above="@+id/button3"
+            android:layout_toLeftOf="@+id/button3"
+            android:layout_toStartOf="@+id/button3"
+            android:layout_marginRight="13dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="66dp" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/settingsTB"
@@ -83,5 +71,46 @@
         android:layout_alignParentStart="true"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="0dp" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/theme"
+            android:text="LOGOUT" />
+
+    <EditText
+        android:id="@+id/budget"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/password"
+        android:layout_alignEnd="@+id/email"
+        android:layout_alignRight="@+id/email"
+        android:layout_marginBottom="50dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Budget" />
+    <Button
+        android:id="@+id/saveInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="26dp"
+        android:onClick="saveInfo"
+        android:text="Save" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        android:layout_above="@+id/budget"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>

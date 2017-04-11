@@ -62,7 +62,7 @@
         android:layout_height="wrap_content"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
-        android:layout_alignTop="@+id/BTCamera"
+        android:layout_alignTop="@+id/BTManual"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -77,5 +77,16 @@
         android:layout_alignTop="@+id/BTCamera"
         android:layout_toLeftOf="@+id/BTAlert"
         android:layout_toStartOf="@+id/BTAlert" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/BTManual"
+        android:layout_alignStart="@+id/BTManual"
+        android:layout_below="@+id/BTSettings"
+        android:layout_toLeftOf="@+id/BTSettings"
+        android:layout_toStartOf="@+id/BTSettings"
+        android:text="NEW BUDGET OVERVIEW BUDGET HERE" />
 
 </RelativeLayout>

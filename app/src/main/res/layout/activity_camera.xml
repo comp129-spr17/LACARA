@@ -10,15 +10,7 @@
         app:srcCompat="@android:color/background_dark"
         android:id="@+id/captureView"
         android:layout_width="match_parent"
-        android:layout_height="450dp" />
-
-    <Button
-        android:text="Capture"
-        android:layout_width="match_parent"
-        android:id="@+id/capture"
-        android:layout_height="match_parent"
-        style="@style/Widget.AppCompat.Button"
-        android:onClick="dispatchTakePictureIntent" />
+        android:layout_height="match_parent" />
 
 </LinearLayout>
 
