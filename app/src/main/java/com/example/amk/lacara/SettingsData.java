@@ -9,6 +9,7 @@ public class SettingsData {
     private double _budget;
     private String _name;
     private String _password;
+    private String _email;
     //private int _notifications;
 
 
@@ -16,6 +17,7 @@ public class SettingsData {
         this._budget=budget;
         this._name=name;
         this._password=password;
+        this._email=password;
        // this._notifications=notif;
     }
 
@@ -25,6 +27,9 @@ public class SettingsData {
 
     public String get_name(){
         return _name;
+    }
+    public String get_email(){
+        return _email;
     }
 
    /* public int get_notifications()
