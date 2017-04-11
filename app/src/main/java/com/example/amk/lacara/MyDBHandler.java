@@ -180,14 +180,6 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 dbString += " ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_date"));
                 dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_budget"));
-                dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_name"));
-                dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_email"));
-                dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_password"));
-                dbString += " ";
                 dbString += recordSet.getString(recordSet.getColumnIndex("_Cat"));
                 dbString += "\n";
             }
