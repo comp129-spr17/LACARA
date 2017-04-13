@@ -24,12 +24,12 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Initial Balance:"
-        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
-        android:layout_below="@+id/textView3"
         android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3" />
+        android:layout_alignStart="@+id/textView3"
+        android:layout_below="@+id/textView3"
+        android:layout_marginTop="32dp"
+        android:text="Initial Set Budget:"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title" />
 
     <TextView
         android:id="@+id/textView9"

@@ -19,9 +19,12 @@
         android:adjustViewBounds="true"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_preferences"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_marginRight="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="21dp"
+        android:layout_above="@+id/BTAlert"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:id="@+id/BTCamera"
@@ -29,9 +32,9 @@
         android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_camera"
-        android:layout_below="@+id/BTSettings"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/BTSettings"
+        android:layout_toLeftOf="@+id/BTSettings"
+        android:layout_toStartOf="@+id/BTSettings" />
 
     <ImageButton
         android:id="@+id/BTManual"
@@ -39,9 +42,9 @@
         android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_edit"
-        android:layout_below="@+id/BTGRAPHS"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/BTSettings"
+        android:layout_toRightOf="@+id/BTGRAPHS"
+        android:layout_toEndOf="@+id/BTGRAPHS" />
 
     <ImageButton
         android:id="@+id/BTAlert"
@@ -50,9 +53,9 @@
         android:cropToPadding="false"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_below="@+id/BTCalendar"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/BTGRAPHS"
+        android:layout_toStartOf="@+id/BTGRAPHS" />
 
     <ImageButton
         android:id="@+id/BTCalendar"
@@ -60,9 +63,9 @@
         android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
-        android:layout_below="@+id/BTCamera"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/BTCamera"
+        android:layout_toLeftOf="@+id/BTCamera"
+        android:layout_toStartOf="@+id/BTCamera" />
 
     <ImageButton
         android:id="@+id/BTGRAPHS"
@@ -70,8 +73,8 @@
         android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_gallery"
-        android:layout_below="@+id/BTAlert"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/BTSettings"
+        android:layout_toLeftOf="@+id/BTSettings"
+        android:layout_toStartOf="@+id/BTSettings" />
 
 </RelativeLayout>
