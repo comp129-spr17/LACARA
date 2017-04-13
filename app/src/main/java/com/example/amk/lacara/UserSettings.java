@@ -3,6 +3,7 @@ package com.example.amk.lacara;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -65,9 +66,14 @@ RelativeLayout r;
         String temp = budget.getText().toString();
         //SettingsData user = new SettingsData(Double.parseDouble(temp),name.getText().toString().toString(),password.getText().toString().toString());
         double b = Double.parseDouble(temp);
-
-        SettingsData user = new SettingsData(b, name.getText().toString(), password.getText().toString());
-        System.out.println("############");
+        Log.d("1","############");
+        Log.d("2",temp);
+        String n = name.getText().toString();
+        String p = password.getText().toString();
+        Log.d("3",n);
+        Log.d("4",p);
+        SettingsData user = new SettingsData(b, n, p);
+        Log.d("5","========");
         System.out.println(user);
         dbHandler.addSettings(user);
     }
