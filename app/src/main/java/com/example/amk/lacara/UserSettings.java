@@ -64,7 +64,6 @@ RelativeLayout r;
     }
     public void saveInfo (View view){
         String temp = budget.getText().toString();
-        //SettingsData user = new SettingsData(Double.parseDouble(temp),name.getText().toString().toString(),password.getText().toString().toString());
         double b = Double.parseDouble(temp);
         Log.d("1","############");
         Log.d("2",temp);
@@ -74,7 +73,7 @@ RelativeLayout r;
         Log.d("4",p);
         SettingsData user = new SettingsData(b, n, p);
         Log.d("5","========");
-        System.out.println(user);
+        Log.d("HERE",user.get_budget()+" "+user.get_name()+" "+user.get_password());
         dbHandler.addSettings(user);
     }
 }
