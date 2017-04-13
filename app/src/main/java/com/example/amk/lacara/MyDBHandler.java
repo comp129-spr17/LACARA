@@ -68,7 +68,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    //Add a new row to database
+    //Add a new row to database iteminfo
     public void addRecipe(Data recipe)
     {
         Calendar c = Calendar.getInstance();

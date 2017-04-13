@@ -63,7 +63,12 @@ RelativeLayout r;
     }
     public void saveInfo (View view){
         String temp = budget.getText().toString();
-        SettingsData user = new SettingsData(Double.parseDouble(temp),name.getText().toString().toString(),password.getText().toString().toString());
+        //SettingsData user = new SettingsData(Double.parseDouble(temp),name.getText().toString().toString(),password.getText().toString().toString());
+        double b = Double.parseDouble(temp);
+
+        SettingsData user = new SettingsData(b, name.getText().toString(), password.getText().toString());
+        System.out.println("############");
+        System.out.println(user);
         dbHandler.addSettings(user);
     }
 }
