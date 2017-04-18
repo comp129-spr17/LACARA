@@ -18,7 +18,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 2;
     private static final String DATABASE_NAME= "recipes.db";
     public static final String TABLE_RECIPES = "recipes";
-    public static final String DATABASE_SETTING_NAME = "settings.db";
+    //public static final String DATABASE_SETTING_NAME = "settings.db";
     public static final String TABLE_SETTINGS = "settings";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_RECIPENAME = "_recipename";
@@ -64,7 +64,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        Log.w(MyDBHandler.class.getName(),
+                "Upgrading database from version " + oldVersion + " to "
+                        + newVersion + ", which will destroy all old data");
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_RECIPES);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTINGS);
         onCreate(db);
     }
 

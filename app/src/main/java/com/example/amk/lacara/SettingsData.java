@@ -54,6 +54,7 @@ public class SettingsData {
     public void set_password(String _password){
         this._password=_password;
     }
+    public void set_email(String _email){ this._email=_email; };
    /* public void set_notifications(int _notifications) {
         this._notifications=_notifications;
     } */
