@@ -92,28 +92,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         alert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(UserActivity.this);
-                alert.setMessage("Warning ! you spend too much this month!");
-                alert.setCancelable(false);
-
-                alert.setPositiveButton(
-                        "Understand",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-
-                alert.setNegativeButton(
-                        "Don't Care",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = alert.create();
-                alert11.show();
-                }
+                showAlerts(true);
+            }
         });
     }
 
@@ -125,6 +105,32 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     @Override
     public void onShowPress(MotionEvent motionEvent) {
 
+    }
+
+    public void showAlerts(boolean overSpend){
+            AlertDialog.Builder alert = new AlertDialog.Builder(UserActivity.this);
+            alert.setMessage("Warning ! you spend too much this month!");
+            alert.setCancelable(false);
+
+            alert.setPositiveButton(
+                    "Understand",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            alert.setNegativeButton(
+                    "Don't Care",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert11 = alert.create();
+            if(overSpend) {
+                alert11.show();
+            }
     }
 
     @Override
