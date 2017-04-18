@@ -50,8 +50,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         String settingsQuery =  "CREATE TABLE " + TABLE_SETTINGS + "(" +
                 COLUMN_EMAIL + " TEXT PRIMARY KEY, " +
-                COLUMN_NAME + " TEXT " +
-                COLUMN_PASS + " TEXT " +
+                COLUMN_NAME + " TEXT, " +
+                COLUMN_PASS + " TEXT, " +
                 COLUMN_BUDGET + " FLOAT " +
 
 

@@ -40,7 +40,7 @@ RelativeLayout r;
         setSupportActionBar(SettingsToolbar);
         t=(ToggleButton)findViewById(R.id.theme);
         r= (RelativeLayout) findViewById(R.id.layout);
-
+        dbHandler = new MyDBHandler(this, null, null, 1);
         t.setOnCheckedChangeListener(this);
 
         name = (EditText) findViewById(R.id.name);
