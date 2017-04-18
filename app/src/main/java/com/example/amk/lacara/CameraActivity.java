@@ -104,7 +104,6 @@ public class CameraActivity extends AppCompatActivity {
     }
 
 
-    String mCurrentPhotoPath = "";
     private File createImageFile() throws IOException {
         // Create an unique image file name with current date
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
@@ -113,16 +112,7 @@ public class CameraActivity extends AppCompatActivity {
         File storageDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
         File image = new File(storageDir,imageFileName);
         // Save a file: path for use with ACTION_VIEW intents
-        mCurrentPhotoPath = image.getAbsolutePath();
-
         return image;
     }
 
-    // add method to return the last photopath
-    public String getURL(){
-        if (mCurrentPhotoPath != ""){
-            return mCurrentPhotoPath;
-        }
-        return null;
-    }
 }
