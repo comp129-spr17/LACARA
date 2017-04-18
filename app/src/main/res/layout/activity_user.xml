@@ -14,79 +14,67 @@
 
     <ImageButton
         android:id="@+id/BTSettings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:adjustViewBounds="true"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_preferences"
-        android:layout_alignParentTop="true"
+        android:layout_marginRight="55dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginBottom="21dp"
+        android:layout_above="@+id/BTAlert"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 
     <ImageButton
         android:id="@+id/BTCamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_camera"
-        android:layout_alignTop="@+id/BTManual"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/BTSettings"
+        android:layout_toLeftOf="@+id/BTSettings"
+        android:layout_toStartOf="@+id/BTSettings" />
 
     <ImageButton
         android:id="@+id/BTManual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_edit"
-        android:layout_marginTop="161dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginStart="20dp"
         android:layout_below="@+id/BTSettings"
-        android:layout_toRightOf="@+id/BTCalendar"
-        android:layout_toEndOf="@+id/BTCalendar" />
+        android:layout_toRightOf="@+id/BTGRAPHS"
+        android:layout_toEndOf="@+id/BTGRAPHS" />
 
     <ImageButton
         android:id="@+id/BTAlert"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:cropToPadding="false"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_dialog_alert"
-        android:layout_alignTop="@+id/BTGRAPHS"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/BTGRAPHS"
+        android:layout_toStartOf="@+id/BTGRAPHS" />
 
     <ImageButton
         android:id="@+id/BTCalendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
-        android:layout_alignTop="@+id/BTManual"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/BTCamera"
+        android:layout_toLeftOf="@+id/BTCamera"
+        android:layout_toStartOf="@+id/BTCamera" />
 
     <ImageButton
         android:id="@+id/BTGRAPHS"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_gallery"
-        android:layout_marginRight="17dp"
-        android:layout_marginEnd="17dp"
-        android:layout_alignTop="@+id/BTCamera"
-        android:layout_toLeftOf="@+id/BTAlert"
-        android:layout_toStartOf="@+id/BTAlert" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/BTManual"
-        android:layout_alignStart="@+id/BTManual"
         android:layout_below="@+id/BTSettings"
         android:layout_toLeftOf="@+id/BTSettings"
-        android:layout_toStartOf="@+id/BTSettings"
-        android:text="NEW BUDGET OVERVIEW BUDGET HERE" />
+        android:layout_toStartOf="@+id/BTSettings" />
 
 </RelativeLayout>

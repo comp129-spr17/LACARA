@@ -7,8 +7,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +20,9 @@ import com.android.volley.toolbox.StringRequest;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ManualEnterActivity extends AppCompatActivity {
@@ -27,7 +31,6 @@ public class ManualEnterActivity extends AppCompatActivity {
     EditText location;
     EditText price;
     EditText date;
-    EditText category;
     TextView areaDisplay;
     MyDBHandler dbHandler;
     //String[] itemsTest = AddPrefUtility.getItemList(this);
@@ -39,6 +42,7 @@ public class ManualEnterActivity extends AppCompatActivity {
         Toolbar ManualToolbar = (Toolbar) findViewById(R.id.ManualTB);
         setSupportActionBar(ManualToolbar);
         dbHandler = new MyDBHandler(this, null, null, 1);
+        CatSpinner();
 
         item = (EditText) findViewById(R.id.itemName);
         location = (EditText) findViewById(R.id.locationInput);
@@ -57,6 +61,20 @@ public class ManualEnterActivity extends AppCompatActivity {
             Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp));
             dbHandler.addRecipe(recipe);
             printDatabase();
+        }
+        //create spinner for item categories
+        public void CatSpinner()
+        {
+            Spinner dropdown = (Spinner) findViewById(R.id.categories);
+            List<String> list = new ArrayList<String>();
+            list.add("Food");
+            list.add("Utilities");
+            list.add("Personal");
+            list.add("Activities");
+            list.add("Auto");
+            list.add("Home");
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, list);
+            dropdown.setAdapter(adapter);
         }
 
         //button to test to display saved data

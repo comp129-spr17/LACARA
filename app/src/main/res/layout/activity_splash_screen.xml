@@ -24,8 +24,8 @@
 
     <ImageView
         android:id="@+id/slgView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="335dp"
         android:adjustViewBounds="false"
         app:srcCompat="@drawable/suivrelogo" />
 </LinearLayout>
