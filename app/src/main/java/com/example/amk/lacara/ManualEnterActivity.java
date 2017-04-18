@@ -27,7 +27,7 @@ public class ManualEnterActivity extends AppCompatActivity {
     EditText location;
     EditText price;
     EditText date;
-    EditText category;
+
     TextView areaDisplay;
     MyDBHandler dbHandler;
     //String[] itemsTest = AddPrefUtility.getItemList(this);
