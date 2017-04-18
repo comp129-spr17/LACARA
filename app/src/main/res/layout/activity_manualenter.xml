@@ -51,10 +51,10 @@
         android:ems="10"
         android:hint="Price"
         android:inputType="textPersonName"
-        android:layout_marginTop="132dp"
-        android:layout_below="@+id/locationInput"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignBaseline="@+id/locationInput"
+        android:layout_alignBottom="@+id/locationInput"
+        android:layout_toRightOf="@+id/saveInfo"
+        android:layout_toEndOf="@+id/saveInfo" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/ManualTB"
@@ -84,32 +84,30 @@
         android:id="@+id/areaDisplay"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/priceInput"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/datePicker"
         android:layout_marginTop="95dp"
-        android:visibility="visible" />
-
-    <EditText
-        android:id="@+id/entDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/priceInput"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="dd-mm-yy"
-        android:inputType="date" />
+        android:visibility="visible"
+        android:layout_toEndOf="@+id/categories"
+        android:layout_toRightOf="@+id/categories" />
 
 
     <Spinner
         android:id="@+id/categories"
         android:layout_width="200dp"
         android:layout_height="40dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="18dp"
         android:layout_below="@+id/locationInput"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <DatePicker
+        android:id="@+id/datePicker"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
+        android:datePickerMode="spinner"
+        android:calendarViewShown = "false"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@+id/priceInput"
+        android:layout_toStartOf="@+id/priceInput" />
 
 </RelativeLayout>

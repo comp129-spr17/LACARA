@@ -76,13 +76,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public void addRecipe(Data recipe)
     {
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
-        String formattedDate = df.format(c.getTime());
+        //SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
+        //String formattedDate = df.format(c.getTime());
         ContentValues values = new ContentValues();
         values.put(COLUMN_RECIPENAME, recipe.get_itemname());
         values.put(COLUMN_LOCATION, recipe.get_location());
         values.put(COLUMN_PRICE, recipe.get_price());
-        values.put(COLUMN_DATE, formattedDate);
+        values.put(COLUMN_DATE, recipe.get_date());
         values.put(COLUMN_CAT, "Cat");
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_RECIPES, null, values);

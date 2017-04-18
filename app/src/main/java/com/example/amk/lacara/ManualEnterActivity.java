@@ -24,6 +24,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Calendar;
+import android.widget.DatePicker;
+import android.util.Log;
 
 public class ManualEnterActivity extends AppCompatActivity {
 
@@ -48,7 +51,6 @@ public class ManualEnterActivity extends AppCompatActivity {
         item = (EditText) findViewById(R.id.itemName);
         location = (EditText) findViewById(R.id.locationInput);
         price = (EditText) findViewById(R.id.priceInput);
-        date = (EditText) findViewById(R.id.entDate);
         areaDisplay = (TextView) findViewById(R.id.areaDisplay);
 
 
@@ -57,9 +59,21 @@ public class ManualEnterActivity extends AppCompatActivity {
 
     //save entered text to button saveInfo
         public void saveInfo (View view){
+            DatePicker mDatePicker = (DatePicker) findViewById(R.id.datePicker);
             String temp = price.getText().toString();
-            String temp2 = date.getText().toString();
-            Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp));
+            int month = mDatePicker.getMonth();
+            String date = "";
+            month++;
+            if(month < 10)
+            {
+                date = "0" + month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
+            }
+            else
+            {
+                date = month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
+            }
+
+            Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp), date);
             dbHandler.addRecipe(recipe);
             printDatabase();
         }
@@ -76,6 +90,17 @@ public class ManualEnterActivity extends AppCompatActivity {
             list.add("Home");
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, list);
             dropdown.setAdapter(adapter);
+        }
+
+        public void DatePickerInt()
+        {
+            DatePicker mDatePicker = (DatePicker) findViewById(R.id.datePicker);
+            Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            mDatePicker.init(year, month, day, null);
+            //Log.d("test", Integer.toString(mDatePicker.getDayOfMonth()));
         }
 
         //button to test to display saved data
@@ -106,7 +131,7 @@ public class ManualEnterActivity extends AppCompatActivity {
         item.setText("");
         location.setText("");
         price.setText("");
-        date.setText("");
+        //date.setText("");
     }
 
 }

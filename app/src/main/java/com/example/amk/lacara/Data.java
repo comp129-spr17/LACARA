@@ -12,12 +12,14 @@ public class Data {
     private String _itemname;
     private String _location;
     private double _price;
+    private String _date;
 
-    public Data(String name, String location, double price)
+    public Data(String name, String location, double price, String date)
     {
         this._itemname=name;
         this._location=location;
         this._price=price;
+        this._date=date;
     }
 
     public int get_id() {
@@ -36,6 +38,8 @@ public class Data {
         return _price;
     }
 
+    public String get_date() { return _date; }
+
     public void set_id(int _id) {
         this._id = _id;
     }
@@ -51,4 +55,6 @@ public class Data {
     public void set_price(double _price) {
         this._price = _price;
     }
+
+    public void set_date(String _date) { this._date = _date; }
 }

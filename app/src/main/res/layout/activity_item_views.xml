@@ -19,9 +19,9 @@
         android:id="@+id/textView6"
         android:layout_width="30pt"
         android:layout_height="wrap_content"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="44dp"
         android:text="Location"
-        android:layout_below="@+id/textView5"
+        android:layout_below="@+id/displayItem"
         android:layout_alignLeft="@+id/textView5"
         android:layout_alignStart="@+id/textView5" />
 
@@ -29,19 +29,19 @@
         android:id="@+id/textView7"
         android:layout_width="30pt"
         android:layout_height="wrap_content"
-        android:layout_marginTop="47dp"
         android:text="Date"
-        android:layout_below="@+id/textView6"
+        android:layout_alignTop="@+id/datePicker2"
         android:layout_alignLeft="@+id/textView6"
-        android:layout_alignStart="@+id/textView6" />
+        android:layout_alignStart="@+id/textView6"
+        android:layout_marginTop="13dp" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="30pt"
         android:layout_height="wrap_content"
-        android:layout_marginTop="41dp"
+        android:layout_marginTop="28dp"
         android:text="Price"
-        android:layout_below="@+id/textView7"
+        android:layout_below="@+id/datePicker2"
         android:layout_alignLeft="@+id/textView7"
         android:layout_alignStart="@+id/textView7" />
 
@@ -62,42 +62,41 @@
         android:id="@+id/displayLocation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
         android:layout_alignBaseline="@+id/textView6"
         android:layout_alignBottom="@+id/textView6"
         android:layout_alignLeft="@+id/displayItem"
-        android:layout_alignStart="@+id/displayItem"
-        android:ems="10"
-        android:inputType="textPersonName" />
-
-    <EditText
-        android:id="@+id/displayDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView7"
-        android:layout_alignBottom="@+id/textView7"
-        android:layout_alignLeft="@+id/displayLocation"
-        android:layout_alignStart="@+id/displayLocation"
-        android:ems="10"
-        android:inputType="textPersonName" />
+        android:layout_alignStart="@+id/displayItem" />
 
     <EditText
         android:id="@+id/displayPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/displayDate"
-        android:layout_alignRight="@+id/displayDate"
-        android:layout_below="@+id/displayDate"
-        android:layout_marginTop="14dp"
         android:ems="10"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:layout_alignTop="@+id/textView8"
+        android:layout_alignLeft="@+id/datePicker2"
+        android:layout_alignStart="@+id/datePicker2" />
 
     <Button
         android:id="@+id/editInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView8"
-        android:layout_alignStart="@+id/textView8"
+        android:text="Edit"
         android:layout_below="@+id/displayPrice"
-        android:layout_marginTop="28dp"
-        android:text="Edit" />
+        android:layout_alignRight="@+id/textView8"
+        android:layout_alignEnd="@+id/textView8"
+        android:layout_marginTop="32dp" />
+
+    <DatePicker
+        android:id="@+id/datePicker2"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:datePickerMode="spinner"
+        android:calendarViewShown = "false"
+        android:layout_marginTop="22dp"
+        android:layout_below="@+id/displayLocation"
+        android:layout_alignLeft="@+id/displayLocation"
+        android:layout_alignStart="@+id/displayLocation" />
 </RelativeLayout>
