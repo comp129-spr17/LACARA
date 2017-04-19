@@ -64,8 +64,8 @@
         android:scaleType="matrix"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         android:layout_alignTop="@+id/BTCamera"
-        android:layout_toLeftOf="@+id/BTCamera"
-        android:layout_toStartOf="@+id/BTCamera" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/BTGRAPHS"
