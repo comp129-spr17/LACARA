@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +32,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         detector = new GestureDetectorCompat(this, this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Toolbar MainToolbar = (Toolbar) findViewById(R.id.MainTB);
+        setSupportActionBar(MainToolbar);
 
 
         final EditText entEmailLogin = (EditText) findViewById(R.id.entEmailLogin);

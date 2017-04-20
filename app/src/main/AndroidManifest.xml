@@ -25,7 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".UserActivity" />
+        <activity android:name=".UserActivity"
+            android:label="Budget Overview"/>
         <activity android:name=".CameraActivity" />
         <activity android:name=".GraphsActivity" />
         <activity
@@ -34,11 +35,16 @@
         <activity
             android:name=".ManualEnterActivity"
             android:label="Manual Entry" />
-        <activity android:name=".BudgetOverviewActivity" />
+
+        <activity android:name=".BudgetOverviewActivity"
+            android:label="Budget Overview"/>
+
         <activity android:name=".SplashScreen" />
+
         <activity
             android:name=".UserSettings"
             android:label="Settings"></activity>
+
         <activity android:name=".ItemViews"></activity>
     </application>
 
