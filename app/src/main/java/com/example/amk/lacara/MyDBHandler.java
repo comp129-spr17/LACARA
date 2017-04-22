@@ -194,6 +194,28 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return list;
     }
 
+    public double getTotalSpending()
+    {
+        double totalSpending = 0;
+        SQLiteDatabase db = getWritableDatabase();
+
+        Log.d("tag", "Total money");
+        String query = "SELECT " + COLUMN_PRICE + " FROM " + TABLE_RECIPES;
+        Log.d("tag", query);
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        recordSet.getColumnIndex("_recipename");
+        while (!recordSet.isAfterLast()) {
+            // null could happen if we used our empty constructor
+            if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
+                totalSpending += Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_price")));
+            }
+            recordSet.moveToNext();
+        }
+        db.close();
+        return totalSpending;
+    }
+
     public boolean updateSingleDate(String x, String newInfo, int id)
     {
         SQLiteDatabase db = getWritableDatabase();
