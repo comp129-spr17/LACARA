@@ -26,10 +26,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_PRICE = "_price";
     public static final String COLUMN_DATE = "_date";
     public static final String COLUMN_CAT = "_Cat";
-    public static final String COLUMN_NAME = " _Name ";
-    public static final String COLUMN_EMAIL = " _email ";
-    public static final String COLUMN_PASS = " _Password ";
-    public static final String COLUMN_BUDGET = " _budget ";
+    public static final String COLUMN_NAME = " _Name";
+    public static final String COLUMN_EMAIL = " _email";
+    public static final String COLUMN_PASS = " _Password";
+    public static final String COLUMN_BUDGET = " _budget";
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -45,17 +45,13 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_PRICE + " DOUBLE, " +
                 COLUMN_DATE + " TEXT, " +
                 COLUMN_CAT + " TEXT " +
-
                 ");";
 
         String settingsQuery =  "CREATE TABLE " + TABLE_SETTINGS + "(" +
                 COLUMN_EMAIL + " TEXT PRIMARY KEY, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_PASS + " TEXT, " +
-                COLUMN_BUDGET + " FLOAT " +
-
-
-
+                COLUMN_BUDGET + " DOUBLE " +
                 ");";
         db.execSQL(RecipeQ);
         db.execSQL(settingsQuery);
@@ -192,6 +188,25 @@ public class MyDBHandler extends SQLiteOpenHelper {
         }
         db.close();
         return list;
+    }
+
+    public double getBudget()
+    {
+        double budget = 0;
+        SQLiteDatabase db = getWritableDatabase();
+
+        Log.d("tag", "Budget");
+        String query = "SELECT " + COLUMN_BUDGET + " FROM " + TABLE_SETTINGS;
+        Log.d("tag", query);
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        recordSet.getColumnIndex("_budget");
+        while (!recordSet.isAfterLast()) {
+            budget = Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_budget")));
+            recordSet.moveToNext();
+        }
+        db.close();
+        return budget;
     }
 
     public double getTotalSpending()
