@@ -206,10 +206,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         recordSet.moveToFirst();
         recordSet.getColumnIndex("_recipename");
         while (!recordSet.isAfterLast()) {
-            // null could happen if we used our empty constructor
-            if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
                 totalSpending += Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_price")));
-            }
             recordSet.moveToNext();
         }
         db.close();
