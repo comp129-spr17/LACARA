@@ -25,7 +25,8 @@ public class BudgetOverviewActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                budget.setText(String.valueOf(dbHandler.getBudget()));
+                //budget.setText(String.valueOf(dbHandler.getBudget()));
+                //budget.setText("100");
                 spent.setText(String.valueOf(dbHandler.getTotalSpending()));
             }
         });

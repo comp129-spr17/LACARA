@@ -1,6 +1,8 @@
 package com.example.amk.lacara;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -76,7 +78,39 @@ public class ManualEnterActivity extends AppCompatActivity {
             Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp), date);
             dbHandler.addRecipe(recipe);
             printDatabase();
+            showAlerts();
         }
+
+
+        public void showAlerts(){
+            AlertDialog.Builder alert = new AlertDialog.Builder(ManualEnterActivity.this);
+            alert.setMessage("Warning ! you spend too much this month!");
+            alert.setCancelable(false);
+
+            alert.setPositiveButton(
+                "Understand",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+            alert.setNegativeButton(
+                "Don't Care",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+            AlertDialog alert11 = alert.create();
+
+            if(100 - dbHandler.getTotalSpending() <= 0) {
+                alert11.show();
+        }
+    }
+
+
+
         //create spinner for item categories
         public void CatSpinner()
         {
