@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.view.GestureDetector;
 import android.widget.ImageButton;
@@ -23,6 +24,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     private static final int SWIPE_THRESHOLD_VELOCITY = 100;
     private GestureDetectorCompat detector;
     MyDBHandler myDBHandler;
+    TextView spent;
+    Button update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,9 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         setContentView(R.layout.activity_user);
         Toolbar MainToolbar = (Toolbar) findViewById(R.id.MainTB);
         setSupportActionBar(MainToolbar);
+        myDBHandler = new MyDBHandler(this, null, null, 1);
+        spent =(TextView)findViewById(R.id.spent);
+        update = (Button)findViewById(R.id.update);
 
 
         final EditText entEmailLogin = (EditText) findViewById(R.id.entEmailLogin);
@@ -48,6 +54,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         final ImageButton calendar = (ImageButton) findViewById(R.id.BTCalendar);
         final ImageButton manual = (ImageButton) findViewById(R.id.BTManual);
         final ImageButton alert = (ImageButton) findViewById(R.id.BTAlert);
+        final TextView budgetView = (TextView) findViewById(R.id.budgetView);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,11 +100,15 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             }
         });
 
-        //Setting the Budget
-        //double temp = myDBHandler.getBudget();
-        String currentBudget = "$"+"100.00";//String.valueOf(temp);
-        TextView budgetView = (TextView) findViewById(R.id.budgetView);
-        budgetView.setText(currentBudget);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //budget.setText(String.valueOf(dbHandler.getBudget()));
+                double totalSpent = myDBHandler.getTotalSpending();
+                budgetView.setText(String.valueOf(100 - totalSpent));
+                spent.setText(String.valueOf(totalSpent));
+            }
+        });
     }
 
     @Override
