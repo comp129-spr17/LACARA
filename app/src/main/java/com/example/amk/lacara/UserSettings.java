@@ -1,7 +1,9 @@
 package com.example.amk.lacara;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -53,7 +55,35 @@ RelativeLayout r;
         //notifications = (Ed) findViewById(R.id.notifications);
 
         final Button logoutButton = (Button) findViewById(R.id.logoutButton);
+        final Button disBudget = (Button) findViewById(R.id.disBudget);
 
+        disBudget.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                double temp = dbHandler.getBudget();
+                String currentBudget = "$" + String.valueOf(temp);
+                Log.d("Budget", currentBudget);
+                AlertDialog.Builder alert = new AlertDialog.Builder(UserSettings.this);
+                alert.setMessage(currentBudget);
+                alert.setCancelable(false);
+                alert.setPositiveButton(
+                        "Understand",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+                alert.setNegativeButton(
+                        "Don't Care",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = alert.create();
+            }
+        });
 
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override

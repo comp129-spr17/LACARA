@@ -225,4 +225,22 @@ public class MyDBHandler extends SQLiteOpenHelper {
 
         return sum;
     }
+
+    public double getBudget() {
+        double budget = 0;
+        SQLiteDatabase db = getWritableDatabase();
+
+        Log.d("tag", "Budget");
+        String query = "SELECT " + COLUMN_BUDGET + " FROM " + TABLE_SETTINGS;
+        Log.d("tag", query);
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        recordSet.getColumnIndex("_budget");
+        while (!recordSet.isAfterLast()) {
+            budget = Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_budget")));
+            recordSet.moveToNext();
+        }
+        db.close();
+        return budget;
+    }
 }
