@@ -52,7 +52,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_EMAIL + " TEXT PRIMARY KEY, " +
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_PASS + " TEXT, " +
-                COLUMN_BUDGET + " FLOAT " +
+                COLUMN_BUDGET + " DOUBLE " +
 
 
 

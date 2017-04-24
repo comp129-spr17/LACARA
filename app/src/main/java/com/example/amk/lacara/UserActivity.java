@@ -16,6 +16,9 @@ import android.view.GestureDetector;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 
 public class UserActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -149,6 +152,10 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     @Override
     public void onLongPress(MotionEvent motionEvent) {
 
+    }
+
+    public void getBudget() {
+        TextView name = (TextView) findViewById(R.id.Budget);
     }
 
     @Override
