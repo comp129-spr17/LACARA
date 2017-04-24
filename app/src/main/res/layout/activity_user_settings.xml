@@ -39,7 +39,9 @@
         android:layout_below="@+id/email"
         android:ems="10"
         android:hint="Password"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
+        android:selectAllOnFocus="false"
+        android:singleLine="false"
         tools:layout_editor_absoluteY="147dp" />
 
     <ToggleButton
