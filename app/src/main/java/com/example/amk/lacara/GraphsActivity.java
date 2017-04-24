@@ -10,30 +10,20 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class GraphsActivity extends AppCompatActivity{
+    MyDBHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphs);
+        db = new MyDBHandler(this, null, null, 1);
+        ArrayList<BarEntry> entries = MonthlyData(db);
 
         BarChart barChart = (BarChart) findViewById(R.id.chart);
 
-        ArrayList<BarEntry> entries = new ArrayList<>();
-        entries.add(new BarEntry(4f, 0));
-        entries.add(new BarEntry(8f, 1));
-        entries.add(new BarEntry(6f, 2));
-        entries.add(new BarEntry(12f, 3));
-        entries.add(new BarEntry(18f, 4));
-        entries.add(new BarEntry(9f, 5));
-        entries.add(new BarEntry(4f, 6));
-        entries.add(new BarEntry(4f, 7));
-        entries.add(new BarEntry(4f, 8));
-        entries.add(new BarEntry(4f, 9));
-        entries.add(new BarEntry(4f, 10));
-        entries.add(new BarEntry(4f, 11));
-
-        BarDataSet dataset = new BarDataSet(entries, "Your expense");
+        BarDataSet dataset = new BarDataSet(entries, "Your monthly expenses");
 
         ArrayList<String> labels = new ArrayList<String>();
         labels.add("January");
@@ -52,8 +42,41 @@ public class GraphsActivity extends AppCompatActivity{
         BarData data = new BarData(labels, dataset);
         dataset.setColors(ColorTemplate.COLORFUL_COLORS);
         barChart.setData(data);
-        barChart.animateY(5000);
+        barChart.animateY(3000);
         barChart.setDescription("Monthly Expenses");
     }
+    public ArrayList<BarEntry> MonthlyData(MyDBHandler DB)
+    {
+        String yr = String.valueOf(Calendar.getInstance().get(Calendar.YEAR));
+        float Jan = (float) DB.getMonthTotal("01",yr);
+        float Feb = (float) DB.getMonthTotal("02",yr);
+        float Mar = (float) DB.getMonthTotal("03",yr);
+        float Apr = (float) DB.getMonthTotal("04",yr);
+        float May = (float) DB.getMonthTotal("05",yr);
+        float Jun = (float) DB.getMonthTotal("06",yr);
+        float Jul = (float) DB.getMonthTotal("07",yr);
+        float Aug = (float) DB.getMonthTotal("08",yr);
+        float Sep = (float) DB.getMonthTotal("09",yr);
+        float Oct = (float) DB.getMonthTotal("10",yr);
+        float Nov = (float) DB.getMonthTotal("11",yr);
+        float Dec = (float) DB.getMonthTotal("12",yr);
+
+        ArrayList<BarEntry> Entries = new ArrayList<>();
+        Entries.add(new BarEntry(Jan, 0));
+        Entries.add(new BarEntry(Feb, 1));
+        Entries.add(new BarEntry(Mar, 2));
+        Entries.add(new BarEntry(Apr, 3));
+        Entries.add(new BarEntry(May, 4));
+        Entries.add(new BarEntry(Jun, 5));
+        Entries.add(new BarEntry(Jul, 6));
+        Entries.add(new BarEntry(Aug, 7));
+        Entries.add(new BarEntry(Sep, 8));
+        Entries.add(new BarEntry(Oct, 9));
+        Entries.add(new BarEntry(Nov, 10));
+        Entries.add(new BarEntry(Dec, 11));
+
+        return Entries;
+    }
+
 }
 
