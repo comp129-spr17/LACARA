@@ -1,12 +1,15 @@
 package com.example.amk.lacara;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.ToggleButton;
 import android.support.v7.widget.Toolbar;
@@ -48,6 +51,17 @@ RelativeLayout r;
         email = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         //notifications = (Ed) findViewById(R.id.notifications);
+
+        final Button logoutButton = (Button) findViewById(R.id.logoutButton);
+
+
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent logoutIntent = new Intent(UserSettings.this, MainActivity.class);
+                UserSettings.this.startActivity(logoutIntent);
+            }
+        });
 
     }
 

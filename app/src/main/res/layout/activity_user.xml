@@ -99,7 +99,7 @@
         android:layout_alignParentEnd="true" />
 
     <TextView
-        android:id="@+id/Budget"
+        android:id="@+id/budgetView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
@@ -113,13 +113,12 @@
         android:id="@+id/BudgetLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Remaining: "
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        android:layout_alignBaseline="@+id/budgetView"
+        android:layout_alignBottom="@+id/budgetView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignTop="@+id/Budget"
-        android:layout_marginLeft="37dp"
-        android:layout_marginStart="37dp"
-        android:text="Budget:"
-        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+        android:layout_alignParentStart="true" />
 
     <ListView
         android:layout_width="match_parent"

@@ -1,7 +1,6 @@
 package com.example.amk.lacara;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
@@ -10,15 +9,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.View.OnTouchListener;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
 
 
 public class UserActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -28,6 +22,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     private static final int SWIPE_THRESHOLD = 100;
     private static final int SWIPE_THRESHOLD_VELOCITY = 100;
     private GestureDetectorCompat detector;
+    MyDBHandler myDBHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +40,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         String useremail = intent.getStringExtra("useremail");
 
         String message = useremail + "is logged in!";
-//        final Button camera = (Button) findViewById(R.id.BTcamera);
-//        final Button graphs = (Button) findViewById(R.id.BTGraphs);
-//        final Button calendar = (Button) findViewById(R.id.BTCalendar);
-//        final Button manual = (Button) findViewById(R.id.BTManual);
-//        final Button alert = (Button) findViewById(R.id.BTAlert);
+
 
         final ImageButton settings = (ImageButton) findViewById(R.id.BTSettings);
         final ImageButton camera = (ImageButton) findViewById(R.id.BTCamera);
@@ -101,6 +92,12 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 showAlerts(true);
             }
         });
+
+        //Setting the Budget
+        //double temp = myDBHandler.getBudget();
+        String currentBudget = "$"+"100.00";//String.valueOf(temp);
+        TextView budgetView = (TextView) findViewById(R.id.budgetView);
+        budgetView.setText(currentBudget);
     }
 
     @Override
@@ -155,7 +152,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void getBudget() {
-        TextView name = (TextView) findViewById(R.id.Budget);
+        TextView name = (TextView) findViewById(R.id.budgetView);
     }
 
     @Override
