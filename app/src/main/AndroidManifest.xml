@@ -36,9 +36,6 @@
             android:name=".ManualEnterActivity"
             android:label="Manual Entry" />
 
-        <activity android:name=".BudgetOverviewActivity"
-            android:label="Budget Overview"/>
-
         <activity android:name=".SplashScreen" />
 
         <activity

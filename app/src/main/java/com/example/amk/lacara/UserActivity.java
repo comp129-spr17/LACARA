@@ -180,9 +180,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                         Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
                         UserActivity.this.startActivity(manualIntent);
                     } else {
-                        //swipe to left to reach this
-                        Intent budgetOverviewIntent = new Intent(UserActivity.this, BudgetOverviewActivity.class);
-                        UserActivity.this.startActivity(budgetOverviewIntent);
                     }
                     result = true;
                 }
