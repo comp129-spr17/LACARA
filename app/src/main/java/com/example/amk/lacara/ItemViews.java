@@ -34,7 +34,9 @@ public class ItemViews extends AppCompatActivity {
         //areaDisplay = (TextView) findViewById(R.id.displayTest);
         name = (EditText) findViewById(R.id.displayItem);
         //date = (EditText) findViewById(R.id.displayDate);
-        price = (EditText) findViewById(R.id.displayPrice);
+        //price = (EditText) findViewById(R.id.displayPrice);
+        EditText price = (EditText) findViewById(R.id.displayPrice);
+        price.addTextChangedListener(new NumberTextWatcher(price, "#,###"));
         location = (EditText) findViewById(R.id.displayLocation);
         dbHandler = new MyDBHandler(this, null, null, 1);
         Log.d("test", temp[0]);
@@ -65,10 +67,10 @@ public class ItemViews extends AppCompatActivity {
                     dbHandler.updateSingleDate("_date", date.getText().toString(), result);
                 }
 
-                if(ifChange(price.getText().toString(),infoList.get(3)))
+                /*if(ifChange(price.getText().toString(),infoList.get(3)))
                 {
                     dbHandler.updateSingleDate("_price", price.getText().toString(), result);
-                }
+                }*/
             }
         });
     }

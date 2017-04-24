@@ -202,4 +202,27 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return db.update(TABLE_RECIPES, args, COLUMN_ID + "=" + id, null) > 0;
 
     }
+
+    public double getMonthTotal(String month, String year)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        double sum = 0;
+        String date = month + "-__-" + year;
+        String query = "SELECT *" + " FROM " + TABLE_RECIPES + " WHERE " + COLUMN_DATE + " like " + "\'" + date + "\'";
+        Log.d("Get Month Querty", query);
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        recordSet.getColumnIndex("_recipename");
+        while (!recordSet.isAfterLast()) {
+            // null could happen if we used our empty constructor
+            if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
+                Log.d("Query result", recordSet.getString(recordSet.getColumnIndex("_price")));
+                sum += Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_price")));
+            }
+            recordSet.moveToNext();
+        }
+        db.close();
+
+        return sum;
+    }
 }

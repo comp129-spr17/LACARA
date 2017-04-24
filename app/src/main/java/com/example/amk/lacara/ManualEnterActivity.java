@@ -126,7 +126,9 @@ public class ManualEnterActivity extends AppCompatActivity {
 
     public void printDatabase()
     {
-        String dbString = dbHandler.databaseToString();
+        //String dbString = dbHandler.databaseToString();
+        double test = dbHandler.getMonthTotal("04", "2017");
+        String dbString =  "" + test;
         areaDisplay.setText(dbString);
         item.setText("");
         location.setText("");
