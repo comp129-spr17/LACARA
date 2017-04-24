@@ -4,15 +4,21 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.view.GestureDetectorCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.view.GestureDetector;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class UserActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -23,9 +29,23 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     private static final int SWIPE_THRESHOLD_VELOCITY = 100;
     private GestureDetectorCompat detector;
     MyDBHandler myDBHandler;
+    private ListView mDrawerList;
+    private ArrayAdapter<String> mAdapter;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout mDrawerLayout;
+    private String mActivityTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        //nav drawer
+        mDrawerList = (ListView)findViewById(R.id.navList);
+
+        //toggle switch on toolbar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+
+
         //Create new director for gesture detection
         detector = new GestureDetectorCompat(this, this);
         super.onCreate(savedInstanceState);
@@ -100,6 +120,22 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         budgetView.setText(currentBudget);
     }
 
+
+
+//adds items to the nav drawer
+    private void addDrawerItems() {
+        String[] osArray = { "Manual Entry", "Camera", "Calendar", "Graphs", "Setttings" };
+        mAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, osArray);
+        mDrawerList.setAdapter(mAdapter);
+    }
+
+    mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            Toast.makeText(MainActivity.this, "Time for an upgrade!", Toast.LENGTH_SHORT).show();
+        }
+    });
+
     @Override
     public boolean onDown(MotionEvent motionEvent) {
         return false;
@@ -151,9 +187,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
 
     }
 
-    public void getBudget() {
-        TextView name = (TextView) findViewById(R.id.budgetView);
-    }
 
     @Override
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
@@ -208,6 +241,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
 
         return false;
     }
+
 
 
     public enum Direction {
