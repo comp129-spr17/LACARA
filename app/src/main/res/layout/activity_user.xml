@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -10,7 +9,6 @@
     android:layout_alignParentTop="true">
 
 <android.support.v4.widget.DrawerLayout
-
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -25,6 +23,7 @@
             android:layout_height="match_parent"
             android:background="@color/colorSplashBG"
             tools:context="com.example.amk.lacara.UserActivity">
+
 
             <ImageButton
                 android:id="@+id/BTSettings"
@@ -93,24 +92,12 @@
                 android:id="@+id/budgetView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/MainTB"
-                android:layout_marginTop="48dp"
-                android:layout_toEndOf="@+id/BudgetLabel"
-                android:layout_toRightOf="@+id/BudgetLabel"
+                android:layout_marginTop="20dp"
                 android:text="TextView"
                 android:textAppearance="@android:style/TextAppearance.Material.Large"
-                android:layout_above="@+id/BTGRAPHS" />
-
-            <TextView
-                android:id="@+id/BudgetLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Remaining: "
-                android:textAppearance="@android:style/TextAppearance.Material.Large"
-                android:layout_alignBaseline="@+id/budgetView"
-                android:layout_alignBottom="@+id/budgetView"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignTop="@+id/BTGRAPHS"
+                android:layout_toRightOf="@+id/BudgetLabel"
+                android:layout_toEndOf="@+id/BudgetLabel" />
 
             <ListView
                 android:layout_width="match_parent"
@@ -118,6 +105,54 @@
                 android:layout_alignParentBottom="true"
                 android:layout_below="@+id/BTManual"
                 android:layout_centerHorizontal="true" />
+
+
+            <TextView
+                android:id="@+id/BudgetLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Remaining: "
+                android:textAppearance="@android:style/TextAppearance.Material.Large"
+                android:layout_alignTop="@+id/budgetView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/BTManual"
+                android:layout_above="@+id/floatingActionButton"
+                android:id="@+id/listView" />
+
+            <TextView
+                android:id="@+id/ts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/BTGRAPHS"
+                android:layout_marginTop="16dp"
+                android:text="Total Spent:" />
+
+            <TextView
+                android:id="@+id/spent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/BTManual"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="11dp"
+                android:text="0.00" />
+
+            <Button
+                android:id="@+id/update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/listView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:text="Update" />
 
         </RelativeLayout>
 

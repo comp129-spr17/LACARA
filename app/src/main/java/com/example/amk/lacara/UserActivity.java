@@ -16,6 +16,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.view.GestureDetector;
 import android.widget.ImageButton;
@@ -37,6 +38,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
     private String mActivityTitle;
+    TextView spent;
+    Button update;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,9 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         setContentView(R.layout.activity_user);
         Toolbar MainToolbar = (Toolbar) findViewById(R.id.MainTB);
         setSupportActionBar(MainToolbar);
+        myDBHandler = new MyDBHandler(this, null, null, 1);
+        spent =(TextView)findViewById(R.id.spent);
+        update = (Button)findViewById(R.id.update);
 
 
 
@@ -80,6 +86,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         final ImageButton calendar = (ImageButton) findViewById(R.id.BTCalendar);
         final ImageButton manual = (ImageButton) findViewById(R.id.BTManual);
         final ImageButton alert = (ImageButton) findViewById(R.id.BTAlert);
+        final TextView budgetView = (TextView) findViewById(R.id.budgetView);
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,11 +132,15 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             }
         });
 
-        //Setting the Budget
-        //double temp = myDBHandler.getBudget();
-        String currentBudget = "$"+"100.00";//String.valueOf(temp);
-        TextView budgetView = (TextView) findViewById(R.id.budgetView);
-        budgetView.setText(currentBudget);
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //budget.setText(String.valueOf(dbHandler.getBudget()));
+                double totalSpent = myDBHandler.getTotalSpending();
+                budgetView.setText(String.valueOf(100 - totalSpent));
+                spent.setText(String.valueOf(totalSpent));
+            }
+        });
     }
 
 
@@ -271,9 +282,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                         Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
                         UserActivity.this.startActivity(manualIntent);
                     } else {
-                        //swipe to left to reach this
-                        Intent budgetOverviewIntent = new Intent(UserActivity.this, BudgetOverviewActivity.class);
-                        UserActivity.this.startActivity(budgetOverviewIntent);
                     }
                     result = true;
                 }
