@@ -52,7 +52,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 COLUMN_NAME + " TEXT, " +
                 COLUMN_PASS + " TEXT, " +
                 COLUMN_BUDGET + " DOUBLE " +
-                ")";
+                ");";
         db.execSQL(RecipeQ);
         db.execSQL(settingsQuery);
 

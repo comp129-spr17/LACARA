@@ -137,7 +137,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             public void onClick(View v) {
                 //budget.setText(String.valueOf(dbHandler.getBudget()));
                 double totalSpent = myDBHandler.getTotalSpending();
-                budgetView.setText(String.valueOf(100 - totalSpent));
+                budgetView.setText(String.valueOf(5000 - totalSpent));
                 spent.setText(String.valueOf(totalSpent));
             }
         });
@@ -156,7 +156,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
      mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-            Toast.makeText(UserActivity.this, "Coming Soon!", Toast.LENGTH_SHORT).show();
+           Toast.makeText(UserActivity.this, "Coming Soon!", Toast.LENGTH_SHORT).show();
         }
     });
 }

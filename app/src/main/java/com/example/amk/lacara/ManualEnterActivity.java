@@ -104,7 +104,8 @@ public class ManualEnterActivity extends AppCompatActivity {
                 });
             AlertDialog alert11 = alert.create();
 
-            if(100 - dbHandler.getTotalSpending() <= 0) {
+            //hardcoded
+            if(5000 - dbHandler.getTotalSpending() <= 0) {
                 alert11.show();
         }
     }
