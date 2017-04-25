@@ -12,7 +12,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true">
 
 
 
@@ -92,10 +95,10 @@
                 android:id="@+id/budgetView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
                 android:text="TextView"
                 android:textAppearance="@android:style/TextAppearance.Material.Large"
-                android:layout_alignTop="@+id/BTGRAPHS"
+                android:layout_alignBaseline="@+id/BudgetLabel"
+                android:layout_alignBottom="@+id/BudgetLabel"
                 android:layout_toRightOf="@+id/BudgetLabel"
                 android:layout_toEndOf="@+id/BudgetLabel" />
 
@@ -113,46 +116,42 @@
                 android:layout_height="wrap_content"
                 android:text="Remaining: "
                 android:textAppearance="@android:style/TextAppearance.Material.Large"
-                android:layout_alignTop="@+id/budgetView"
+                android:layout_alignTop="@+id/BTGRAPHS"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
             <ListView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@+id/BTManual"
-                android:layout_above="@+id/floatingActionButton"
-                android:id="@+id/listView" />
+                android:id="@+id/listView"
+                android:layout_below="@+id/update" />
 
             <TextView
                 android:id="@+id/ts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
+                android:text="Total Spent:"
                 android:layout_below="@+id/BTGRAPHS"
-                android:layout_marginTop="16dp"
-                android:text="Total Spent:" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <TextView
                 android:id="@+id/spent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/BTManual"
+                android:text="0.00"
+                android:layout_below="@+id/ts"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginBottom="11dp"
-                android:text="0.00" />
+                android:layout_alignParentStart="true" />
 
             <Button
                 android:id="@+id/update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/listView"
+                android:text="Update"
+                android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:text="Update" />
+                android:layout_alignParentStart="true" />
 
         </RelativeLayout>
 
