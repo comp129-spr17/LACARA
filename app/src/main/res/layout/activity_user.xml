@@ -18,8 +18,9 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_preferences"
         android:background="@null"
-        android:layout_above="@+id/BTCamera"
-        android:layout_centerHorizontal="true" />
+        android:layout_alignTop="@+id/BTManual"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 
     <ImageButton
@@ -29,12 +30,9 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_edit"
         android:background="@null"
-        android:layout_marginBottom="58dp"
-        android:layout_marginRight="28dp"
-        android:layout_marginEnd="28dp"
-        android:layout_above="@+id/ts"
-        android:layout_toLeftOf="@+id/BTCamera"
-        android:layout_toStartOf="@+id/BTCamera" />
+        android:layout_alignTop="@+id/BTGRAPHS"
+        android:layout_toRightOf="@+id/BTGRAPHS"
+        android:layout_toEndOf="@+id/BTGRAPHS" />
 
     <ImageButton
         android:id="@+id/BTCalendar"
@@ -44,9 +42,11 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         android:background="@null"
-        android:layout_above="@+id/BTManual"
+        android:layout_alignTop="@+id/BTCamera"
         android:layout_alignRight="@+id/BudgetLabel"
-        android:layout_alignEnd="@+id/BudgetLabel" />
+        android:layout_alignEnd="@+id/BudgetLabel"
+        android:layout_marginRight="17dp"
+        android:layout_marginEnd="17dp" />
 
     <ImageButton
         android:id="@+id/BTGRAPHS"
@@ -55,50 +55,51 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_gallery"
         android:background="@null"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp"
-        android:layout_above="@+id/BTCamera"
-        android:layout_toRightOf="@+id/BTSettings"
-        android:layout_toEndOf="@+id/BTSettings" />
+        android:layout_alignTop="@+id/BTCalendar"
+        android:layout_centerHorizontal="true" />
 
-
-            <TextView
-                android:id="@+id/BudgetLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="Remaining: "
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:layout_marginBottom="18dp"
-                android:layout_above="@+id/update"
-                android:layout_alignRight="@+id/ts"
-                android:layout_alignEnd="@+id/ts" />
-
-            <TextView
-                android:id="@+id/ts"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="serif"
-                android:text="Total Spent:"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:layout_marginBottom="16dp"
-                android:layout_above="@+id/spent"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="14dp"
-                android:layout_marginStart="14dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/BudgetLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/ts"
+        android:layout_alignRight="@+id/ts"
+        android:layout_below="@+id/ts"
+        android:layout_marginTop="18dp"
+        android:fontFamily="serif"
+        android:text="Remaining: "
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/ts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/MainTB"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="19dp"
+        android:fontFamily="serif"
+        android:text="Total Spent:"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textSize="27sp" />
+
+    <TextView
+        android:id="@+id/budgetView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/ts"
+        android:layout_alignBottom="@+id/ts"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="39dp"
+        android:layout_marginRight="39dp"
         android:fontFamily="serif"
         android:text="0.00"
-        android:textSize="24sp"
-        android:layout_alignBaseline="@+id/update"
-        android:layout_alignBottom="@+id/update"
-        android:layout_alignLeft="@+id/spent"
-        android:layout_alignStart="@+id/spent" />
+        android:textSize="24sp" />
 
             <Button
                 android:id="@+id/update"
@@ -106,12 +107,10 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:text="Update"
-                android:layout_marginRight="20dp"
-                android:layout_marginEnd="20dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginTop="22dp"
+                android:layout_below="@+id/spent"
+                android:layout_alignRight="@+id/BTGRAPHS"
+                android:layout_alignEnd="@+id/BTGRAPHS" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/MainTB"
@@ -132,21 +131,22 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_camera"
         android:background="@null"
-        android:layout_alignTop="@+id/BTManual"
-        android:layout_toLeftOf="@+id/update"
-        android:layout_toStartOf="@+id/update" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="11dp" />
 
     <TextView
         android:id="@+id/spent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="14dp"
+        android:layout_alignBaseline="@+id/BudgetLabel"
+        android:layout_alignBottom="@+id/BudgetLabel"
+        android:layout_alignLeft="@+id/budgetView"
+        android:layout_alignStart="@+id/budgetView"
         android:fontFamily="serif"
         android:text="0.00"
-        android:textSize="24sp"
-        android:layout_above="@+id/BudgetLabel"
-        android:layout_alignLeft="@+id/BTCalendar"
-        android:layout_alignStart="@+id/BTCalendar" />
+        android:textSize="24sp" />
 
 </RelativeLayout>
 

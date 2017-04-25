@@ -64,7 +64,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         final ImageButton graphs = (ImageButton) findViewById(R.id.BTGRAPHS);
         final ImageButton calendar = (ImageButton) findViewById(R.id.BTCalendar);
         final ImageButton manual = (ImageButton) findViewById(R.id.BTManual);
-        final ImageButton alert = (ImageButton) findViewById(R.id.BTAlert);
         final TextView budgetView = (TextView) findViewById(R.id.budgetView);
 
         camera.setOnClickListener(new View.OnClickListener() {
@@ -104,12 +103,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             }
         });
 
-        alert.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showAlerts(true);
-            }
-        });
 
         update.setOnClickListener(new View.OnClickListener() {
             @Override
