@@ -182,6 +182,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                         Intent manualIntent = new Intent(UserActivity.this, ManualEnterActivity.class);
                         UserActivity.this.startActivity(manualIntent);
                     } else {
+                        Intent settingsIntent = new Intent(UserActivity.this, UserSettings.class);
+                        UserActivity.this.startActivity(settingsIntent);
                     }
                     result = true;
                 }
