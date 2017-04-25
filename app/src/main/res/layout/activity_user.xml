@@ -18,7 +18,7 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_preferences"
         android:background="@null"
-        android:layout_alignTop="@+id/BTGRAPHS"
+        android:layout_above="@+id/BTCamera"
         android:layout_centerHorizontal="true" />
 
 
@@ -29,12 +29,12 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_edit"
         android:background="@null"
-        android:layout_marginBottom="46dp"
-        android:layout_above="@+id/BudgetLabel"
+        android:layout_marginBottom="58dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_above="@+id/ts"
         android:layout_toLeftOf="@+id/BTCamera"
-        android:layout_toStartOf="@+id/BTCamera"
-        android:layout_marginRight="30dp"
-        android:layout_marginEnd="30dp" />
+        android:layout_toStartOf="@+id/BTCamera" />
 
     <ImageButton
         android:id="@+id/BTCalendar"
@@ -44,9 +44,9 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_my_calendar"
         android:background="@null"
-        android:layout_alignTop="@+id/BTSettings"
-        android:layout_alignRight="@+id/ts"
-        android:layout_alignEnd="@+id/ts" />
+        android:layout_above="@+id/BTManual"
+        android:layout_alignRight="@+id/BudgetLabel"
+        android:layout_alignEnd="@+id/BudgetLabel" />
 
     <ImageButton
         android:id="@+id/BTGRAPHS"
@@ -55,12 +55,11 @@
         android:scaleType="fitCenter"
         app:srcCompat="@android:drawable/ic_menu_gallery"
         android:background="@null"
-        android:layout_above="@+id/BTManual"
-        android:layout_alignRight="@+id/update"
-        android:layout_alignEnd="@+id/update"
-        android:layout_marginRight="24dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="28dp" />
+        android:layout_marginLeft="14dp"
+        android:layout_marginStart="14dp"
+        android:layout_above="@+id/BTCamera"
+        android:layout_toRightOf="@+id/BTSettings"
+        android:layout_toEndOf="@+id/BTSettings" />
 
 
             <TextView
@@ -70,10 +69,10 @@
                 android:fontFamily="serif"
                 android:text="Remaining: "
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:layout_marginBottom="38dp"
+                android:layout_marginBottom="18dp"
                 android:layout_above="@+id/update"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignRight="@+id/ts"
+                android:layout_alignEnd="@+id/ts" />
 
             <TextView
                 android:id="@+id/ts"
@@ -82,10 +81,12 @@
                 android:fontFamily="serif"
                 android:text="Total Spent:"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:layout_above="@+id/textView"
+                android:layout_marginBottom="16dp"
+                android:layout_above="@+id/spent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_marginBottom="26dp" />
+                android:layout_marginLeft="14dp"
+                android:layout_marginStart="14dp" />
 
     <TextView
         android:id="@+id/textView"
@@ -94,10 +95,10 @@
         android:fontFamily="serif"
         android:text="0.00"
         android:textSize="24sp"
-        android:layout_marginBottom="13dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/BTGRAPHS"
-        android:layout_alignEnd="@+id/BTGRAPHS" />
+        android:layout_alignBaseline="@+id/update"
+        android:layout_alignBottom="@+id/update"
+        android:layout_alignLeft="@+id/spent"
+        android:layout_alignStart="@+id/spent" />
 
             <Button
                 android:id="@+id/update"
@@ -105,11 +106,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="serif"
                 android:text="Update"
-                android:layout_above="@+id/ts"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="22dp"
-                android:layout_marginEnd="22dp" />
+                android:layout_marginBottom="10dp" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/MainTB"
@@ -134,5 +136,17 @@
         android:layout_toLeftOf="@+id/update"
         android:layout_toStartOf="@+id/update" />
 
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/spent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:fontFamily="serif"
+        android:text="0.00"
+        android:textSize="24sp"
+        android:layout_above="@+id/BudgetLabel"
+        android:layout_alignLeft="@+id/BTCalendar"
+        android:layout_alignStart="@+id/BTCalendar" />
+
+</RelativeLayout>
 

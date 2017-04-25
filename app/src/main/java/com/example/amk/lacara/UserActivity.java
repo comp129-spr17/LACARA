@@ -33,11 +33,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     private static final int SWIPE_THRESHOLD_VELOCITY = 100;
     private GestureDetectorCompat detector;
     MyDBHandler myDBHandler;
-    private ListView mDrawerList;
-    private ArrayAdapter<String> mAdapter;
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    private String mActivityTitle;
     TextView spent;
     Button update;
 
@@ -52,22 +47,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         myDBHandler = new MyDBHandler(this, null, null, 1);
         spent =(TextView)findViewById(R.id.spent);
         update = (Button)findViewById(R.id.update);
-
-
-
-        //nav drawer
-        mDrawerList = (ListView)findViewById(R.id.navList);
-
-        mDrawerLayout = (DrawerLayout)findViewById(R.id.drawer_layout);
-        mActivityTitle = getTitle().toString();
-
-        addDrawerItems();
-        setupDrawer();
-
-
-        //toggle switch on toolbar
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
 
 
 
@@ -142,78 +121,6 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
             }
         });
     }
-
-
-
-//adds items to the nav drawer
-    private void addDrawerItems() {
-    String[] osArray = { "blah", "Manual Item Entry", "Camera", "Calendar", "Graphs", "Settings" };
-    mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, osArray);
-    mDrawerList.setAdapter(mAdapter);
-
-
-        //when item is clicked
-     mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-        @Override
-        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-           Toast.makeText(UserActivity.this, "Coming Soon!", Toast.LENGTH_SHORT).show();
-        }
-    });
-}
-
-
-
-   private void setupDrawer() {
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
-
-
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-                getSupportActionBar().setTitle("Menu");
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-
-
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-                getSupportActionBar().setTitle(mActivityTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-
-        mDrawerToggle.setDrawerIndicatorEnabled(true);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-    }
-
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        mDrawerToggle.syncState();
-    }
-
-    @Override
-    public void onConfigurationChanged(Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        mDrawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        // Activate the navigation drawer toggle
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-
-
-
 
 
     @Override
