@@ -63,29 +63,29 @@
         android:id="@+id/BudgetLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/ts"
-        android:layout_alignRight="@+id/ts"
-        android:layout_below="@+id/ts"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="22dp"
         android:fontFamily="serif"
-        android:text="Remaining: "
+        android:text="Total Spent: "
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="27sp" />
+        android:textSize="27sp"
+        android:layout_below="@+id/ts"
+        android:layout_alignLeft="@+id/ts"
+        android:layout_alignStart="@+id/ts" />
 
     <TextView
         android:id="@+id/ts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/MainTB"
         android:layout_marginLeft="12dp"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="17dp"
         android:fontFamily="serif"
-        android:text="Total Spent:"
+        android:text="Remaining Budget:"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="27sp" />
+        android:textSize="27sp"
+        android:layout_below="@+id/MainTB"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:id="@+id/budgetView"
