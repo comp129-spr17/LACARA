@@ -25,52 +25,56 @@
         android:layout_alignParentStart="true" />
 
     <EditText
+        android:id="@+id/entEmailLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/entEmailLogin"
-        android:hint="Email"
         android:layout_above="@+id/entPassLogin"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentStart="true"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="Email"
+        android:inputType="textEmailAddress" />
 
     <EditText
+        android:id="@+id/entPassLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:id="@+id/entPassLogin"
-        android:hint="Password"
-        android:layout_marginBottom="114dp"
         android:layout_above="@+id/btLogin"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="114dp"
+        android:ems="10"
+        android:fontFamily="serif"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/btLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
-
-    <Button
-        android:text="LOGIN"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/btLogin"
         android:layout_marginLeft="78dp"
         android:layout_marginStart="78dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:fontFamily="serif"
+        android:text="LOGIN" />
 
     <Button
-        android:text="REGISTER"
+        android:id="@+id/btReg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/btReg"
+        android:layout_alignParentBottom="true"
         android:layout_marginLeft="15dp"
         android:layout_marginStart="15dp"
-        android:layout_alignParentBottom="true"
+        android:layout_toEndOf="@+id/btLogin"
         android:layout_toRightOf="@+id/btLogin"
-        android:layout_toEndOf="@+id/btLogin" />
+        android:fontFamily="serif"
+        android:text="REGISTER" />
 
 </RelativeLayout>

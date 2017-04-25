@@ -1,26 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_alignParentTop="true">
-
-<android.support.v4.widget.DrawerLayout
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_centerVertical="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true">
-
-
-
-
-        <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
             android:id="@+id/activity_user"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -28,155 +10,129 @@
             tools:context="com.example.amk.lacara.UserActivity">
 
 
-            <ImageButton
-                android:id="@+id/BTSettings"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:adjustViewBounds="true"
-                android:scaleType="matrix"
-                app:srcCompat="@android:drawable/ic_menu_preferences" />
-
-            <ImageButton
-                android:id="@+id/BTCamera"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_above="@+id/BTAlert"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:scaleType="matrix"
-                app:srcCompat="@android:drawable/ic_menu_camera" />
-
-            <ImageButton
-                android:id="@+id/BTManual"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_below="@+id/BTCalendar"
-                android:layout_toLeftOf="@+id/BTSettings"
-                android:layout_toStartOf="@+id/BTSettings"
-                android:scaleType="matrix"
-                app:srcCompat="@android:drawable/ic_menu_edit" />
-
-            <ImageButton
-                android:id="@+id/BTAlert"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_above="@+id/BTSettings"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:cropToPadding="false"
-                android:scaleType="matrix"
-                app:srcCompat="@android:drawable/ic_dialog_alert" />
-
-            <ImageButton
-                android:id="@+id/BTCalendar"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignLeft="@+id/BTGRAPHS"
-                android:layout_alignStart="@+id/BTGRAPHS"
-                android:layout_below="@+id/BTCamera"
-                android:scaleType="matrix"
-                app:srcCompat="@android:drawable/ic_menu_my_calendar" />
-
-            <ImageButton
-                android:id="@+id/BTGRAPHS"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_alignTop="@+id/BTCamera"
-                android:layout_toLeftOf="@+id/BTCamera"
-                android:layout_toStartOf="@+id/BTCamera"
-                android:scaleType="matrix"
-                app:srcCompat="@android:drawable/ic_menu_gallery" />
+    <ImageButton
+        android:id="@+id/BTSettings"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_preferences"
+        android:background="@null"
+        android:layout_alignTop="@+id/BTGRAPHS"
+        android:layout_centerHorizontal="true" />
 
 
-            <TextView
-                android:id="@+id/budgetView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textAppearance="@android:style/TextAppearance.Material.Large"
-                android:layout_alignBaseline="@+id/BudgetLabel"
-                android:layout_alignBottom="@+id/BudgetLabel"
-                android:layout_toRightOf="@+id/BudgetLabel"
-                android:layout_toEndOf="@+id/BudgetLabel" />
+    <ImageButton
+        android:id="@+id/BTManual"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        android:background="@null"
+        android:layout_marginBottom="46dp"
+        android:layout_above="@+id/BudgetLabel"
+        android:layout_toLeftOf="@+id/BTCamera"
+        android:layout_toStartOf="@+id/BTCamera"
+        android:layout_marginRight="30dp"
+        android:layout_marginEnd="30dp" />
 
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentBottom="true"
-                android:layout_below="@+id/BTManual"
-                android:layout_centerHorizontal="true" />
+    <ImageButton
+        android:id="@+id/BTCalendar"
+        style="@style/Widget.AppCompat.ImageButton"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"
+        android:background="@null"
+        android:layout_alignTop="@+id/BTSettings"
+        android:layout_alignRight="@+id/ts"
+        android:layout_alignEnd="@+id/ts" />
+
+    <ImageButton
+        android:id="@+id/BTGRAPHS"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_gallery"
+        android:background="@null"
+        android:layout_above="@+id/BTManual"
+        android:layout_alignRight="@+id/update"
+        android:layout_alignEnd="@+id/update"
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="28dp" />
 
 
             <TextView
                 android:id="@+id/BudgetLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
                 android:text="Remaining: "
-                android:textAppearance="@android:style/TextAppearance.Material.Large"
-                android:layout_alignTop="@+id/BTGRAPHS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_marginBottom="38dp"
+                android:layout_above="@+id/update"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
-
-            <ListView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/listView"
-                android:layout_below="@+id/update" />
 
             <TextView
                 android:id="@+id/ts"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
                 android:text="Total Spent:"
-                android:layout_below="@+id/BTGRAPHS"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large"
+                android:layout_above="@+id/textView"
                 android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_alignParentStart="true"
+                android:layout_marginBottom="26dp" />
 
-            <TextView
-                android:id="@+id/spent"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="0.00"
-                android:layout_below="@+id/ts"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="serif"
+        android:text="0.00"
+        android:textSize="24sp"
+        android:layout_marginBottom="13dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/BTGRAPHS"
+        android:layout_alignEnd="@+id/BTGRAPHS" />
 
             <Button
                 android:id="@+id/update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="serif"
                 android:text="Update"
-                android:layout_centerVertical="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true" />
+                android:layout_above="@+id/ts"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="22dp"
+                android:layout_marginEnd="22dp" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/MainTB"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageButton
+        android:id="@+id/BTCamera"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@android:drawable/ic_menu_camera"
+        android:background="@null"
+        android:layout_alignTop="@+id/BTManual"
+        android:layout_toLeftOf="@+id/update"
+        android:layout_toStartOf="@+id/update" />
 
         </RelativeLayout>
 
-
-
-    <ListView
-android:id="@+id/navList"
-android:layout_width="200dp"
-android:layout_height="match_parent"
-android:layout_gravity="left|start"
-android:background="#3F51B5"/>
-
-
-
-</android.support.v4.widget.DrawerLayout>
-
-<android.support.v7.widget.Toolbar
-android:id="@+id/MainTB"
-android:layout_width="match_parent"
-android:layout_height="56dp"
-android:layout_alignParentLeft="true"
-android:layout_alignParentStart="true"
-android:layout_alignParentTop="true"
-android:background="?attr/colorPrimary"
-android:elevation="4dp"
-android:minHeight="?attr/actionBarSize"
-android:theme="?attr/actionBarTheme" />
-    </RelativeLayout>
