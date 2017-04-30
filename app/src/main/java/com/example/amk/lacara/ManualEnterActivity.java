@@ -61,24 +61,50 @@ public class ManualEnterActivity extends AppCompatActivity {
 
     //save entered text to button saveInfo
         public void saveInfo (View view){
-            DatePicker mDatePicker = (DatePicker) findViewById(R.id.datePicker);
-            String temp = price.getText().toString();
-            int month = mDatePicker.getMonth();
-            String date = "";
-            month++;
-            if(month < 10)
-            {
-                date = "0" + month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
-            }
-            else
-            {
-                date = month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
-            }
 
-            Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp), date);
-            dbHandler.addRecipe(recipe);
-            printDatabase();
-            showAlerts();
+            final String temp = price.getText().toString();
+
+            AlertDialog.Builder alert = new AlertDialog.Builder(ManualEnterActivity.this);
+            alert.setMessage("Warning ! you spend too much this month!");
+            alert.setCancelable(false);
+
+            alert.setPositiveButton(
+                    "Understand",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+
+            alert.setNegativeButton(
+                    "Don't Care",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            DatePicker mDatePicker = (DatePicker) findViewById(R.id.datePicker);
+
+                            int month = mDatePicker.getMonth();
+                            String date = "";
+                            month++;
+                            if(month < 10)
+                            {
+                                date = "0" + month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
+                            }
+                            else
+                            {
+                                date = month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
+                            }
+
+                            Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp), date);
+                            dbHandler.addRecipe(recipe);
+                            printDatabase();
+                        }
+                    });
+            AlertDialog alert11 = alert.create();
+
+            //hardcoded
+            if(dbHandler.getTotalSpending() + Double.parseDouble(temp) >= 5000) {
+                alert11.show();
+            }
         }
 
 
