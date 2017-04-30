@@ -69,7 +69,7 @@ public class ManualEnterActivity extends AppCompatActivity {
             alert.setCancelable(false);
 
             alert.setPositiveButton(
-                    "Understand",
+                    "Understand.",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
@@ -77,7 +77,7 @@ public class ManualEnterActivity extends AppCompatActivity {
                     });
 
             alert.setNegativeButton(
-                    "Don't Care",
+                    "Don't Care!",
                     new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             DatePicker mDatePicker = (DatePicker) findViewById(R.id.datePicker);
@@ -101,42 +101,11 @@ public class ManualEnterActivity extends AppCompatActivity {
                     });
             AlertDialog alert11 = alert.create();
 
-            //hardcoded
+            //hardcode budget now
             if(dbHandler.getTotalSpending() + Double.parseDouble(temp) >= 5000) {
                 alert11.show();
             }
         }
-
-
-        public void showAlerts(){
-            AlertDialog.Builder alert = new AlertDialog.Builder(ManualEnterActivity.this);
-            alert.setMessage("Warning ! you spend too much this month!");
-            alert.setCancelable(false);
-
-            alert.setPositiveButton(
-                "Understand",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-
-            alert.setNegativeButton(
-                "Don't Care",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
-            AlertDialog alert11 = alert.create();
-
-            //hardcoded
-            if(5000 - dbHandler.getTotalSpending() <= 0) {
-                alert11.show();
-        }
-    }
-
-
 
         //create spinner for item categories
         public void CatSpinner()
