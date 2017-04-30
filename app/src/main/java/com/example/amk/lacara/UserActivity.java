@@ -23,6 +23,7 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.util.Log;
 
 
 public class UserActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
@@ -35,6 +36,9 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
     MyDBHandler myDBHandler;
     TextView spent;
     Button update;
+    double totalSpent;
+    String budget;
+    double moneyLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +51,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         myDBHandler = new MyDBHandler(this, null, null, 1);
         spent =(TextView)findViewById(R.id.spent);
         update = (Button)findViewById(R.id.update);
-
-
+        totalSpent = myDBHandler.getTotalSpending();
+        myDBHandler.userExist();
 
 
         final EditText entEmailLogin = (EditText) findViewById(R.id.entEmailLogin);
@@ -102,14 +106,19 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 UserActivity.this.startActivity(settingsIntent);
             }
         });
-
-
+        budget = myDBHandler.getBudget();
+        moneyLeft = Double.parseDouble(budget) - totalSpent;
+        budgetView.setText(String.valueOf(moneyLeft));
+        spent.setText(String.valueOf(totalSpent));
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //budget.setText(String.valueOf(dbHandler.getBudget()));
-                double totalSpent = myDBHandler.getTotalSpending();
-                budgetView.setText(String.valueOf(5000 - totalSpent));
+                Log.d("budget", myDBHandler.getBudget());
+                budget = myDBHandler.getBudget();
+                totalSpent = myDBHandler.getTotalSpending();
+                moneyLeft = Double.parseDouble(budget) - totalSpent;
+                budgetView.setText(String.valueOf(moneyLeft));
                 spent.setText(String.valueOf(totalSpent));
             }
         });

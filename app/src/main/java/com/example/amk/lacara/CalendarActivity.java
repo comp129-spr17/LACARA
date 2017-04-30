@@ -27,7 +27,7 @@ public class CalendarActivity extends AppCompatActivity {
     //private ArrayList<String> arrayListTemp;
     private ArrayAdapter<String> adapter;
     MyDBHandler dbHandler;
-
+    private ArrayList<ArrayList<String>> alList = new ArrayList<ArrayList<String>>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +61,22 @@ public class CalendarActivity extends AppCompatActivity {
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
                 String temp = df.format(date.getDate());
+
+                alList.addAll(dbHandler.singleResult(temp));
+                String item = "";
                 arrayList.clear();
 
                 arrayList.add(temp);
+                for (int x = 0; x < alList.size(); x++)
+                {
+                    item += alList.get(x).get(1);
+                    item += " ";
+                    item += alList.get(x).get(3);
+                    arrayList.add(item);
+                    item = "";
+                }
 
-                //ArrayList<String> arrayListTemp = dbHandler.singleResult(temp);
-                //arrayList.addAll(arrayListTemp);
-                arrayList.addAll(dbHandler.singleResult(temp));
-              /*  Log.d("tag", arrayList.get(0).toString());
-                Log.d("tag", arrayList.get(1).toString());
-                Log.d("tag", arrayList.get(2).toString());*/
+
                 adapter.notifyDataSetChanged();
             }
         });
@@ -89,6 +95,7 @@ public class CalendarActivity extends AppCompatActivity {
             if(position != 0) {
                 Intent settingsIntent = new Intent(CalendarActivity.this, ItemViews.class);
                 settingsIntent.putExtra("item", arrayList.get(position));
+                settingsIntent.putExtra("id", alList.get(position - 1).get(0));
                 CalendarActivity.this.startActivity(settingsIntent);
             }
         }

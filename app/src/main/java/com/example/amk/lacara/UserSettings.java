@@ -14,8 +14,7 @@ import android.widget.RelativeLayout;
 import android.widget.ToggleButton;
 import android.support.v7.widget.Toolbar;
 
-
-
+import java.util.ArrayList;
 
 
 public class UserSettings extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
@@ -29,9 +28,9 @@ public class UserSettings extends AppCompatActivity implements CompoundButton.On
 
 
 
-int dark = Color.parseColor("#7A8AA1");
-ToggleButton t;
-RelativeLayout r;
+    int dark = Color.parseColor("#7A8AA1");
+    ToggleButton t;
+    RelativeLayout r;
 
 
 
@@ -53,8 +52,11 @@ RelativeLayout r;
         //notifications = (Ed) findViewById(R.id.notifications);
 
         final Button logoutButton = (Button) findViewById(R.id.logoutButton);
-
-
+        dbHandler.userExist();
+        ArrayList<String> info = new ArrayList<String>();
+        info.addAll(dbHandler.getUser());
+        name.setText(info.get(0));
+        budget.setText(info.get(1));
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,16 +80,10 @@ RelativeLayout r;
     }
     public void saveInfo (View view){
         String temp = budget.getText().toString();
-        double b = Double.parseDouble(temp);
-        Log.d("1","############");
-        Log.d("2",temp);
         String n = name.getText().toString();
-        String p = password.getText().toString();
-        Log.d("3",n);
-        Log.d("4",p);
-        SettingsData user = new SettingsData(b, n, p);
-        Log.d("5","========");
-        Log.d("HERE",user.get_budget()+" "+user.get_name()+" "+user.get_password());
-        dbHandler.addSettings(user);
+        dbHandler.updateUser("_Name", n);
+        dbHandler.updateUser("_budget", temp);
     }
+
+
 }

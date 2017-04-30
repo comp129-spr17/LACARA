@@ -26,10 +26,10 @@ public class MyDBHandler extends SQLiteOpenHelper {
     public static final String COLUMN_PRICE = "_price";
     public static final String COLUMN_DATE = "_date";
     public static final String COLUMN_CAT = "_Cat";
-    public static final String COLUMN_NAME = " _Name";
-    public static final String COLUMN_EMAIL = " _email";
-    public static final String COLUMN_PASS = " _Password";
-    public static final String COLUMN_BUDGET = " _budget";
+    public static final String COLUMN_NAME = "_Name";
+    public static final String COLUMN_EMAIL = "_email";
+    public static final String COLUMN_PASS = "_Password";
+    public static final String COLUMN_BUDGET = "_budget";
 
     public MyDBHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
         super(context, DATABASE_NAME, factory, DATABASE_VERSION);
@@ -48,9 +48,8 @@ public class MyDBHandler extends SQLiteOpenHelper {
                 ");";
 
         String settingsQuery =  "CREATE TABLE " + TABLE_SETTINGS + "(" +
-                COLUMN_EMAIL + " TEXT PRIMARY KEY, " +
+                COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 COLUMN_NAME + " TEXT, " +
-                COLUMN_PASS + " TEXT, " +
                 COLUMN_BUDGET + " DOUBLE " +
                 ");";
         db.execSQL(RecipeQ);
@@ -79,7 +78,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         values.put(COLUMN_LOCATION, recipe.get_location());
         values.put(COLUMN_PRICE, recipe.get_price());
         values.put(COLUMN_DATE, recipe.get_date());
-        values.put(COLUMN_CAT, "Cat");
+        values.put(COLUMN_CAT, recipe.get_cat());
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_RECIPES, null, values);
         db.close();
@@ -90,9 +89,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
     {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, user.get_name());
-        values.put(COLUMN_PASS, user.get_password());
         values.put(COLUMN_BUDGET, user.get_budget());
-        values.put(COLUMN_EMAIL, user.get_email());
         SQLiteDatabase db = getWritableDatabase();
         db.insert(TABLE_SETTINGS, null, values);
         db.close();
@@ -154,10 +151,11 @@ public class MyDBHandler extends SQLiteOpenHelper {
         return list;
     }
 
-    public ArrayList<String> singleResult(String selectedDate)
+    public ArrayList<ArrayList<String>> singleResult(String selectedDate)
     {
         String dbString = "";
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>();
+        ArrayList<String> inner = new ArrayList<String>();
         int x = 0;
         SQLiteDatabase db = getWritableDatabase();
         Log.d("tag", selectedDate);
@@ -169,45 +167,21 @@ public class MyDBHandler extends SQLiteOpenHelper {
         while (!recordSet.isAfterLast()) {
             // null could happen if we used our empty constructor
             if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
-                dbString += recordSet.getString(recordSet.getColumnIndex("_id"));
-                dbString += " : ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_recipename"));
-                dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_location"));
-                dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_price"));
-                dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_date"));
-                dbString += " ";
-                dbString += recordSet.getString(recordSet.getColumnIndex("_Cat"));
-                dbString += "\n";
+                inner.add(recordSet.getString(recordSet.getColumnIndex("_id")));
+                inner.add(recordSet.getString(recordSet.getColumnIndex("_recipename")));
+                inner.add(recordSet.getString(recordSet.getColumnIndex("_location")));
+                inner.add(recordSet.getString(recordSet.getColumnIndex("_price")));
+                inner.add(recordSet.getString(recordSet.getColumnIndex("_date")));
+                inner.add(recordSet.getString(recordSet.getColumnIndex("_Cat")));
             }
-            list.add(dbString);
-            dbString = "";
+            list.add(inner);
+            inner = new ArrayList<String>();
             recordSet.moveToNext();
         }
         db.close();
         return list;
     }
 
-    public double getBudget()
-    {
-        double budget = 0;
-        SQLiteDatabase db = getWritableDatabase();
-
-        Log.d("tag", "Budget");
-        String query = "SELECT " + COLUMN_BUDGET + " FROM " + TABLE_SETTINGS;
-        Log.d("tag", query);
-        Cursor recordSet = db.rawQuery(query, null);
-        recordSet.moveToFirst();
-        recordSet.getColumnIndex("_budget");
-        while (!recordSet.isAfterLast()) {
-            budget = Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_budget")));
-            recordSet.moveToNext();
-        }
-        db.close();
-        return budget;
-    }
 
     public double getTotalSpending()
     {
@@ -221,7 +195,7 @@ public class MyDBHandler extends SQLiteOpenHelper {
         recordSet.moveToFirst();
         recordSet.getColumnIndex("_recipename");
         while (!recordSet.isAfterLast()) {
-                totalSpending += Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_price")));
+            totalSpending += Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_price")));
             recordSet.moveToNext();
         }
         db.close();
@@ -258,5 +232,79 @@ public class MyDBHandler extends SQLiteOpenHelper {
         db.close();
 
         return sum;
+    }
+
+    public double getMonthCat(String month, String year, String Cat)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        double sum = 0;
+        String date = month + "-__-" + year;
+        String query = "SELECT *" + " FROM " + TABLE_RECIPES + " WHERE " + COLUMN_DATE + " like " + "\'" + date + "\' AND " + COLUMN_CAT + " = \'" + Cat + "\'";
+        Log.d("Get Month Querty", query);
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        recordSet.getColumnIndex("_recipename");
+        while (!recordSet.isAfterLast()) {
+            // null could happen if we used our empty constructor
+            if (recordSet.getString(recordSet.getColumnIndex("_recipename")) != null) {
+                Log.d("Query result", recordSet.getString(recordSet.getColumnIndex("_price")));
+                sum += Double.parseDouble(recordSet.getString(recordSet.getColumnIndex("_price")));
+            }
+            recordSet.moveToNext();
+        }
+        db.close();
+
+        return sum;
+    }
+
+    public boolean updateUser(String x, String newInfo)
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues args = new ContentValues();
+        args.put(x, newInfo);
+        return db.update(TABLE_SETTINGS, args, COLUMN_ID + "= 1", null) > 0;
+    }
+
+    public void userExist()
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT *" + " FROM " + TABLE_SETTINGS + " WHERE " + COLUMN_ID + " = 1";
+        Cursor recordSet = db.rawQuery(query, null);
+
+        if (!recordSet.moveToFirst()) {
+            ContentValues args = new ContentValues();
+            args.put(COLUMN_NAME, "Name");
+            args.put(COLUMN_BUDGET, 0);
+            db.insert(TABLE_SETTINGS, null, args);
+            Log.d("insert", "Insert completed");
+        }
+    }
+
+    public ArrayList<String> getUser()
+    {
+        ArrayList<String> result = new ArrayList<String>();
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT *" + " FROM " + TABLE_SETTINGS + " WHERE " + COLUMN_ID + " = 1";
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+
+        if (recordSet.getString(recordSet.getColumnIndex("_id")) != null) {
+            ContentValues args = new ContentValues();
+            result.add(recordSet.getString(recordSet.getColumnIndex("_Name")));
+            result.add(recordSet.getString(recordSet.getColumnIndex("_budget")));
+        }
+        db.close();
+        return result;
+    }
+
+    public String getBudget()
+    {
+        SQLiteDatabase db = getWritableDatabase();
+        String query = "SELECT *" + " FROM " + TABLE_SETTINGS + " WHERE " + COLUMN_ID + " = 1";
+        Cursor recordSet = db.rawQuery(query, null);
+        recordSet.moveToFirst();
+        db.close();
+        Log.d("budget",recordSet.getString(recordSet.getColumnIndex("_budget")));
+        return recordSet.getString(recordSet.getColumnIndex("_budget"));
     }
 }

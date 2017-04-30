@@ -14,6 +14,7 @@ import org.w3c.dom.Text;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
+import android.widget.Toast;
 
 import android.util.Log;
 
@@ -30,17 +31,13 @@ public class ItemViews extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_views);
-        String[] temp = getIntent().getStringExtra("item").split(" ");
-        //areaDisplay = (TextView) findViewById(R.id.displayTest);
+        String id = getIntent().getStringExtra("id");
         name = (EditText) findViewById(R.id.displayItem);
-        //date = (EditText) findViewById(R.id.displayDate);
-        //price = (EditText) findViewById(R.id.displayPrice);
-        EditText price = (EditText) findViewById(R.id.displayPrice);
-        price.addTextChangedListener(new NumberTextWatcher(price, "#,###"));
+        price = (EditText) findViewById(R.id.displayPrice);
+        //price.addTextChangedListener(new NumberTextWatcher(price, "#,###"));
         location = (EditText) findViewById(R.id.displayLocation);
         dbHandler = new MyDBHandler(this, null, null, 1);
-        Log.d("test", temp[0]);
-        result = Integer.parseInt(temp[0]);
+        result = Integer.valueOf(id);
 
         infoList.addAll(dbHandler.itemViewDisplay(result));
         DatePickerInt(infoList.get(2));
@@ -52,6 +49,34 @@ public class ItemViews extends AppCompatActivity {
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                boolean stop = false;
+                if(name.length() == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "Name Empty!", Toast.LENGTH_LONG).show();
+                    name.setText(infoList.get(0));
+                    stop = true;
+                }
+
+                if(location.length() == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "Location Empty!", Toast.LENGTH_LONG).show();
+                    location.setText(infoList.get(1));
+                    stop = true;
+                }
+
+                if(price.length() == 0)
+                {
+                    Toast.makeText(getApplicationContext(), "Price Empty!", Toast.LENGTH_LONG).show();
+                    price.setText(infoList.get(3));
+                    stop = true;
+                }
+
+                if(stop)
+                {
+                    return;
+                }
+
                 if(ifChange(name.getText().toString(),infoList.get(0)))
                 {
                     dbHandler.updateSingleDate("_recipename", name.getText().toString(), result);
@@ -67,10 +92,10 @@ public class ItemViews extends AppCompatActivity {
                     dbHandler.updateSingleDate("_date", date.getText().toString(), result);
                 }
 
-                /*if(ifChange(price.getText().toString(),infoList.get(3)))
+                if(ifChange(price.getText().toString(),infoList.get(3)))
                 {
                     dbHandler.updateSingleDate("_price", price.getText().toString(), result);
-                }*/
+                }
             }
         });
     }

@@ -62,6 +62,7 @@ public class ManualEnterActivity extends AppCompatActivity {
 //save entered text to button saveInfo
     public void saveInfo (View view){
         DatePicker mDatePicker = (DatePicker) findViewById(R.id.datePicker);
+        Spinner dropdown = (Spinner) findViewById(R.id.categories);
         String temp = price.getText().toString();
         int month = mDatePicker.getMonth();
         String date = "";
@@ -74,8 +75,31 @@ public class ManualEnterActivity extends AppCompatActivity {
         {
             date = month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
         }
+        boolean stop = false;
+        if(item.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(), "Item Empty!", Toast.LENGTH_LONG).show();
+            stop = true;
+        }
 
-        Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp), date);
+        if(location.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(), "Location Empty!", Toast.LENGTH_LONG).show();
+            stop = true;
+        }
+
+        if(price.length() == 0)
+        {
+            Toast.makeText(getApplicationContext(), "Price Empty!", Toast.LENGTH_LONG).show();
+            stop = true;
+        }
+
+        if(stop)
+        {
+            return;
+        }
+
+        Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp), date, dropdown.getSelectedItem().toString());
         dbHandler.addRecipe(recipe);
         printDatabase();
         showAlerts();
@@ -166,6 +190,12 @@ public class ManualEnterActivity extends AppCompatActivity {
         item.setText("");
         location.setText("");
         price.setText("");
+      /*  Log.d("Food", Double.toString(dbHandler.getMonthCat("04", "2017", "Food")));
+        Log.d("Utiities", Double.toString(dbHandler.getMonthCat("04", "2017", "Utilities")));
+        Log.d("Personal", Double.toString(dbHandler.getMonthCat("04", "2017", "Personal")));
+        Log.d("Activities", Double.toString(dbHandler.getMonthCat("04", "2017", "Activities")));
+        Log.d("Auto", Double.toString(dbHandler.getMonthCat("04", "2017", "Auto")));
+        Log.d("Home", Double.toString(dbHandler.getMonthCat("04", "2017", "Home")));*/
         //date.setText("");
     }
 
