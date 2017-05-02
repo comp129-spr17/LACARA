@@ -29,6 +29,8 @@ import java.util.Map;
 import java.util.Calendar;
 import android.widget.DatePicker;
 import android.util.Log;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
 
 public class ManualEnterActivity extends AppCompatActivity {
 
@@ -94,12 +96,22 @@ public class ManualEnterActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Location Empty!", Toast.LENGTH_LONG).show();
             stop = true;
         }
+        Pattern p = Pattern.compile("^[0-9]*$");
+        Matcher m = p.matcher(price.toString());
 
         if(price.length() == 0)
         {
             Toast.makeText(getApplicationContext(), "Price Empty!", Toast.LENGTH_LONG).show();
             stop = true;
         }
+
+        if(!m.matches())
+        {
+            Toast.makeText(getApplicationContext(), "Invalid Price Entry!", Toast.LENGTH_LONG).show();
+            price.setText("");
+            stop = true;
+        }
+
 
         if(stop)
         {
@@ -135,10 +147,6 @@ public class ManualEnterActivity extends AppCompatActivity {
                 });
         AlertDialog alert11 = alert.create();
 
-        //hardcoded
-        if(5000 - dbHandler.getTotalSpending() <= 0) {
-            alert11.show();
-        }
     }
 
         //create spinner for item categories

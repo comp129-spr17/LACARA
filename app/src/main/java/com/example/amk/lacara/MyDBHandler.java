@@ -183,14 +183,14 @@ public class MyDBHandler extends SQLiteOpenHelper {
     }
 
 
-    public double getTotalSpending()
+    public double getTotalSpending(String month, String year)
     {
         double totalSpending = 0;
         SQLiteDatabase db = getWritableDatabase();
-
-        Log.d("tag", "Total money");
-        String query = "SELECT " + COLUMN_PRICE + " FROM " + TABLE_RECIPES;
-        Log.d("tag", query);
+        String date = month + "-__-" + year;
+        //Log.d("tag", "Total money");
+        String query = "SELECT " + COLUMN_PRICE + " FROM " + TABLE_RECIPES + " WHERE " + COLUMN_DATE + " like " + "\'" + date + "\'";
+        //Log.d("tag", query);
         Cursor recordSet = db.rawQuery(query, null);
         recordSet.moveToFirst();
         recordSet.getColumnIndex("_recipename");

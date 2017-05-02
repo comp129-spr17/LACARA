@@ -25,6 +25,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.util.Log;
 
+import java.util.Calendar;
+
 
 public class UserActivity extends AppCompatActivity implements GestureDetector.OnGestureListener {
 
@@ -51,7 +53,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         myDBHandler = new MyDBHandler(this, null, null, 1);
         spent =(TextView)findViewById(R.id.spent);
         update = (Button)findViewById(R.id.update);
-        totalSpent = myDBHandler.getTotalSpending();
+
         myDBHandler.userExist();
 
 
@@ -106,17 +108,38 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 UserActivity.this.startActivity(settingsIntent);
             }
         });
+        Calendar c = Calendar.getInstance();
+        int month = c.get(Calendar.MONTH);
+        String monthString = "";
+        if(month < 10)
+        {
+            monthString += "0";
+        }
+        monthString += Integer.toString(month);
+        int year = c.get(Calendar.YEAR);
+        String yearString = Integer.toString(year);
         budget = myDBHandler.getBudget();
+        totalSpent = myDBHandler.getTotalSpending(monthString, yearString);
         moneyLeft = Double.parseDouble(budget) - totalSpent;
         budgetView.setText(String.valueOf(moneyLeft));
         spent.setText(String.valueOf(totalSpent));
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Calendar c = Calendar.getInstance();
+                int month = c.get(Calendar.MONTH);
+                String monthString = "";
+                if(month < 10)
+                {
+                    monthString += "0";
+                }
+                    monthString += Integer.toString(month);
+                int year = c.get(Calendar.YEAR);
+                String yearString = Integer.toString(year);
                 //budget.setText(String.valueOf(dbHandler.getBudget()));
-                Log.d("budget", myDBHandler.getBudget());
+                Log.d("budget", month + " " + year);
                 budget = myDBHandler.getBudget();
-                totalSpent = myDBHandler.getTotalSpending();
+                totalSpent = myDBHandler.getTotalSpending(monthString, yearString);
                 moneyLeft = Double.parseDouble(budget) - totalSpent;
                 budgetView.setText(String.valueOf(moneyLeft));
                 spent.setText(String.valueOf(totalSpent));
