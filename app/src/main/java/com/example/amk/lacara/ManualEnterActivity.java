@@ -147,6 +147,7 @@ public class ManualEnterActivity extends AppCompatActivity {
                 });
         AlertDialog alert11 = alert.create();
 
+
     }
 
         //create spinner for item categories
