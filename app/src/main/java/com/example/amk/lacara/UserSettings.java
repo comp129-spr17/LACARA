@@ -40,7 +40,7 @@ public class UserSettings extends AppCompatActivity implements CompoundButton.On
         setContentView(R.layout.activity_user_settings);
         Toolbar SettingsToolbar = (Toolbar) findViewById(R.id.settingsTB);
         setSupportActionBar(SettingsToolbar);
-        t=(ToggleButton)findViewById(R.id.theme);
+
         r= (RelativeLayout) findViewById(R.id.layout);
         dbHandler = new MyDBHandler(this, null, null, 1);
         t.setOnCheckedChangeListener(this);
