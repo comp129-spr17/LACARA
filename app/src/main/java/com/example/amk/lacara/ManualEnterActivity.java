@@ -105,12 +105,12 @@ public class ManualEnterActivity extends AppCompatActivity {
             stop = true;
         }
 
-        if(!m.matches())
+       /* if(!m.matches())
         {
             Toast.makeText(getApplicationContext(), "Invalid Price Entry!", Toast.LENGTH_LONG).show();
             price.setText("");
             stop = true;
-        }
+        }*/
 
 
         if(stop)
