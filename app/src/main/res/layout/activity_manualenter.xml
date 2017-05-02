@@ -61,7 +61,7 @@
         android:ems="10"
         android:fontFamily="serif"
         android:hint="Price"
-        android:inputType="textPersonName" />
+        android:inputType="numberDecimal" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/ManualTB"
