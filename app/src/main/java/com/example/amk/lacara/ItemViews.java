@@ -87,15 +87,29 @@ public class ItemViews extends AppCompatActivity {
                     dbHandler.updateSingleDate("_location", location.getText().toString(), result);
                 }
 
-                if(ifChange(date.getText().toString(),infoList.get(2)))
-                {
-                    dbHandler.updateSingleDate("_date", date.getText().toString(), result);
-                }
 
                 if(ifChange(price.getText().toString(),infoList.get(3)))
                 {
                     dbHandler.updateSingleDate("_price", price.getText().toString(), result);
                 }
+
+                DatePicker mDatePicker = (DatePicker) findViewById(R.id.datePicker2);
+                String day = "";
+                String month = "";
+                String year = "";
+                if(mDatePicker.getDayOfMonth() < 10)
+                {
+                    day += "0";
+                }
+                day += mDatePicker.getDayOfMonth();
+                if(mDatePicker.getMonth() < 10)
+                {
+                    month += "0";
+                }
+                month += mDatePicker.getMonth()+1;
+                year += mDatePicker.getYear();
+                String date = month + "-" + day + "-" + year;
+                dbHandler.updateSingleDate("_date", date, result);
             }
         });
     }
@@ -117,7 +131,7 @@ public class ItemViews extends AppCompatActivity {
         int year = Integer.parseInt(tokens[2]);
         int month = Integer.parseInt(tokens[0]);
         int day = Integer.parseInt(tokens[1]);
-        mDatePicker.init(year, month, day, null);
+        mDatePicker.init(year, month - 1, day, null);
         Log.d("testdate", tokens[0] + "-" + tokens[1] + "-" + tokens[2]);
     }
 }

@@ -115,7 +115,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
         {
             monthString += "0";
         }
-        monthString += Integer.toString(month);
+        monthString += Integer.toString(month+1);
         int year = c.get(Calendar.YEAR);
         String yearString = Integer.toString(year);
         budget = myDBHandler.getBudget();
@@ -133,7 +133,7 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 {
                     monthString += "0";
                 }
-                    monthString += Integer.toString(month);
+                    monthString += Integer.toString(month+1);
                 int year = c.get(Calendar.YEAR);
                 String yearString = Integer.toString(year);
                 //budget.setText(String.valueOf(dbHandler.getBudget()));
