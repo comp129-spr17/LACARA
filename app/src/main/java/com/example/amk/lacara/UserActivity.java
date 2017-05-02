@@ -141,8 +141,8 @@ public class UserActivity extends AppCompatActivity implements GestureDetector.O
                 budget = myDBHandler.getBudget();
                 totalSpent = myDBHandler.getTotalSpending(monthString, yearString);
                 moneyLeft = Double.parseDouble(budget) - totalSpent;
-                budgetView.setText(String.valueOf(moneyLeft));
-                spent.setText(String.valueOf(totalSpent));
+                budgetView.setText("$"+String.valueOf(moneyLeft));
+                spent.setText("$"+String.valueOf(totalSpent));
             }
         });
     }
