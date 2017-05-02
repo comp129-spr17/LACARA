@@ -47,8 +47,6 @@ public class UserSettings extends AppCompatActivity implements CompoundButton.On
 
         name = (EditText) findViewById(R.id.name);
         budget = (EditText) findViewById(R.id.budget);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
         //notifications = (Ed) findViewById(R.id.notifications);
 
         final Button logoutButton = (Button) findViewById(R.id.logoutButton);

@@ -61,7 +61,7 @@ public class CalendarActivity extends AppCompatActivity {
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
                 SimpleDateFormat df = new SimpleDateFormat("MM-dd-yyyy");
                 String temp = df.format(date.getDate());
-
+                alList.clear();
                 alList.addAll(dbHandler.singleResult(temp));
                 String item = "";
                 arrayList.clear();
