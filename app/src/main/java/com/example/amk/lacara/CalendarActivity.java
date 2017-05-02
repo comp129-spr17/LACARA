@@ -70,7 +70,7 @@ public class CalendarActivity extends AppCompatActivity {
                 for (int x = 0; x < alList.size(); x++)
                 {
                     item += alList.get(x).get(1);
-                    item += " ";
+                    item += "  $";
                     item += alList.get(x).get(3);
                     arrayList.add(item);
                     item = "";
