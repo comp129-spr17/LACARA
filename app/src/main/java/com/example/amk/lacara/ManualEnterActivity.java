@@ -137,7 +137,7 @@ public class ManualEnterActivity extends AppCompatActivity {
 
         //hardcoded
         if(5000 - dbHandler.getTotalSpending() <= 0) {
-            alert11.show();
+         //   alert11.show();
         }
     }
 

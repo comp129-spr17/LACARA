@@ -17,7 +17,7 @@ import android.support.v7.widget.Toolbar;
 import java.util.ArrayList;
 
 
-public class UserSettings extends AppCompatActivity implements CompoundButton.OnCheckedChangeListener{
+public class UserSettings extends AppCompatActivity {
 
     EditText name;
     EditText budget;
@@ -28,22 +28,13 @@ public class UserSettings extends AppCompatActivity implements CompoundButton.On
 
 
 
-    int dark = Color.parseColor("#7A8AA1");
-    ToggleButton t;
-    RelativeLayout r;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_settings);
         Toolbar SettingsToolbar = (Toolbar) findViewById(R.id.settingsTB);
         setSupportActionBar(SettingsToolbar);
-
-        r= (RelativeLayout) findViewById(R.id.layout);
         dbHandler = new MyDBHandler(this, null, null, 1);
-        t.setOnCheckedChangeListener(this);
 
         name = (EditText) findViewById(R.id.name);
         budget = (EditText) findViewById(R.id.budget);
@@ -65,17 +56,6 @@ public class UserSettings extends AppCompatActivity implements CompoundButton.On
 
     }
 
-    @Override
-    public void onCheckedChanged(CompoundButton buttonView, boolean t) {
-        if(t)
-        {
-            r.setBackgroundColor(Color.WHITE);
-        }
-        else
-        {
-            r.setBackgroundColor(Color.parseColor("#7A8AA1"));
-        }
-    }
     public void saveInfo (View view){
         String temp = budget.getText().toString();
         String n = name.getText().toString();
