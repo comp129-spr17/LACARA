@@ -65,16 +65,23 @@ public class ManualEnterActivity extends AppCompatActivity {
         Spinner dropdown = (Spinner) findViewById(R.id.categories);
         String temp = price.getText().toString();
         int month = mDatePicker.getMonth();
+        int day = mDatePicker.getDayOfMonth();
         String date = "";
         month++;
         if(month < 10)
         {
-            date = "0" + month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
+            date += "0";
         }
-        else
+
+        date += month + "-";
+
+        if(day < 10)
         {
-            date = month + "-" + mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
+            date += "0";
         }
+
+        date += mDatePicker.getDayOfMonth() + "-" + mDatePicker.getYear();
+
         boolean stop = false;
         if(item.length() == 0)
         {
@@ -98,7 +105,7 @@ public class ManualEnterActivity extends AppCompatActivity {
         {
             return;
         }
-
+        Log.d("Day", date);
         Data recipe = new Data(item.getText().toString().toString(),location.getText().toString().toString(),Double.parseDouble(temp), date, dropdown.getSelectedItem().toString());
         dbHandler.addRecipe(recipe);
         printDatabase();
@@ -184,7 +191,7 @@ public class ManualEnterActivity extends AppCompatActivity {
     public void printDatabase()
     {
         //String dbString = dbHandler.databaseToString();
-        double test = dbHandler.getMonthTotal("04", "2017");
+        double test = dbHandler.getMonthTotal("05", "2017");
         String dbString =  "" + test;
         areaDisplay.setText(dbString);
         item.setText("");
