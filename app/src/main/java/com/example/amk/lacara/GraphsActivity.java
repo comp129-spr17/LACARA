@@ -49,6 +49,7 @@ public class GraphsActivity extends AppCompatActivity{
         barChart.setData(data);
         barChart.animateY(1000);
         barChart.setDescription("Monthly Expenses");
+        barChart.getLegend().setWordWrapEnabled(true);
 
         PieChart pieChart = (PieChart) findViewById(R.id.chartp);
         PieDataSet datap = new PieDataSet(entriesp, "Categories of expenses");
@@ -64,6 +65,7 @@ public class GraphsActivity extends AppCompatActivity{
         pieChart.setData(pd);
         pieChart.animateY(1000);
         pieChart.setDescription("Item categories break down chart by year");
+        pieChart.getLegend().setWordWrapEnabled(true);
 
 
     }
