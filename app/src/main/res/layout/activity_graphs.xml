@@ -17,7 +17,12 @@
         android:layout_height="wrap_content">
 
         <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/chart"
+            android:id="@+id/chartb"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.github.mikephil.charting.charts.BarChart
+            android:id="@+id/chartp"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
